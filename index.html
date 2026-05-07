@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="description" content="The ultimate miniature paint reference — cross-brand equivalents, Warhammer faction colour schemes, and painting recipes.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>MiniPaint — The Ultimate Miniature Paint Reference</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;
+  --bg-elevated:#111111;
+  --bg-card:#161616;
+  --bg-card-hover:#1c1c1c;
+  --bg-surface:#1e1e1e;
+  --bg-input:#0e0e0e;
+  --red:#c8102e;
+  --red-dark:#a00d24;
+  --red-glow:rgba(200,16,46,0.15);
+  --gold:#c59b2c;
+  --gold-light:#dbb43a;
+  --gold-dark:#a07a1a;
+  --gold-glow:rgba(197,155,44,0.12);
+  --text:#e8e6e3;
+  --text-secondary:#9a9590;
+  --text-muted:#5a5550;
+  --text-dim:#3a3835;
+  --border:#252525;
+  --border-light:#2a2a2a;
+  --border-hover:#3a3a3a;
+  --white:#ffffff;
+  --shadow:0 4px 20px rgba(0,0,0,0.5);
+  --shadow-lg:0 10px 40px rgba(0,0,0,0.6);
+  --shadow-glow:0 0 30px rgba(200,16,46,0.1);
+  --radius:2px;
+  --radius-md:4px;
+  --transition:all 0.3s cubic-bezier(0.25,0.1,0.25,1);
+  --heading:'Oswald',Impact,'Arial Narrow',sans-serif;
+  --body:'Barlow',Helvetica,Arial,sans-serif;
+  --condensed:'Barlow Condensed','Oswald',sans-serif;
+  --sidebar-w:240px;
+  --header-h:56px;
+}
+html{scroll-behavior:smooth;font-size:15px}
+body{
+  font-family:var(--body);
+  background:var(--bg);color:var(--text);
+  line-height:1.6;min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--gold);text-decoration:none;transition:color 0.2s}
+a:hover{color:var(--gold-light)}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--red)}
+
+/* ============================================================
+   HEADER — Dark, minimal, Warhammer-style
+   ============================================================ */
+.header{
+  position:fixed;top:0;left:0;right:0;height:var(--header-h);
+  background:rgba(10,10,10,0.95);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 24px;
+  z-index:1000;
+}
+.header::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--red),transparent);
+  opacity:0.3;
+}
+.menu-btn{
+  display:none;background:none;border:1px solid var(--border);
+  color:var(--text);font-size:1.1rem;cursor:pointer;
+  padding:6px 10px;border-radius:var(--radius);
+  margin-right:14px;transition:var(--transition);
+}
+.menu-btn:hover{border-color:var(--red);color:var(--red)}
+.logo{
+  font-family:var(--heading);font-size:1.2rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:3px;
+  margin-right:auto;display:flex;align-items:center;gap:8px;
+  white-space:nowrap;color:var(--text);
+}
+.logo .accent{color:var(--red)}
+.logo-sub{
+  font-family:var(--condensed);font-size:0.55rem;
+  text-transform:uppercase;letter-spacing:3px;
+  color:var(--text-muted);font-weight:400;
+  margin-left:4px;
+}
+.search-wrap{
+  position:relative;max-width:300px;width:100%;margin:0 20px;
+}
+.search-wrap input{
+  width:100%;padding:8px 14px 8px 36px;
+  background:var(--bg-input);
+  border:1px solid var(--border);
+  color:var(--text);font-family:var(--body);
+  font-size:0.82rem;transition:var(--transition);
+  border-radius:var(--radius);
+}
+.search-wrap input:focus{
+  border-color:var(--red);outline:none;
+  box-shadow:0 0 0 2px var(--red-glow);
+}
+.search-wrap input::placeholder{color:var(--text-muted)}
+.search-wrap .s-icon{
+  position:absolute;left:11px;top:50%;
+  transform:translateY(-50%);color:var(--text-muted);
+  font-size:0.8rem;pointer-events:none;
+}
+.search-drop{
+  position:absolute;top:calc(100% + 6px);left:0;right:0;
+  background:var(--bg-card);border:1px solid var(--border);
+  max-height:400px;overflow-y:auto;display:none;z-index:1001;
+  box-shadow:var(--shadow-lg);border-radius:var(--radius-md);
+}
+.search-drop.open{display:block}
+.sr-item{
+  padding:12px 16px;cursor:pointer;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+  transition:background 0.15s;
+}
+.sr-item:hover{background:var(--bg-card-hover)}
+.sr-item:last-child{border-bottom:none}
+.sr-item .sw{
+  width:32px;height:32px;border-radius:var(--radius);
+  border:1px solid var(--border-light);flex-shrink:0;
+}
+.sr-item .si{flex:1;min-width:0}
+.sr-item .sn{font-weight:600;font-size:0.85rem;color:var(--text)}
+.sr-item .sb{font-size:0.7rem;color:var(--text-muted);margin-top:1px}
+.sr-item .st{
+  font-family:var(--condensed);font-size:0.6rem;
+  padding:2px 8px;background:var(--bg-surface);
+  border:1px solid var(--border);border-radius:var(--radius);
+  color:var(--text-secondary);text-transform:uppercase;
+  letter-spacing:1px;white-space:nowrap;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar{
+  position:fixed;top:var(--header-h);left:0;bottom:0;
+  width:var(--sidebar-w);background:var(--bg-elevated);
+  border-right:1px solid var(--border);
+  overflow-y:auto;padding:12px 0;z-index:999;
+  transition:transform 0.3s ease;
+}
+.sb-section{padding:4px 0}
+.sb-title{
+  font-family:var(--condensed);font-size:0.6rem;
+  font-weight:600;text-transform:uppercase;
+  letter-spacing:3px;color:var(--text-muted);
+  padding:14px 20px 6px;
+}
+.sb-link{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 20px;font-size:0.85rem;font-weight:400;
+  color:var(--text-secondary);cursor:pointer;
+  transition:var(--transition);
+  border-left:2px solid transparent;
+  font-family:var(--body);text-decoration:none;
+}
+.sb-link:hover{color:var(--text);background:rgba(255,255,255,0.02);text-decoration:none}
+.sb-link.active{
+  color:var(--red);border-left-color:var(--red);
+  background:var(--red-glow);font-weight:600;
+}
+.sb-link .ico{font-size:0.9rem;width:20px;text-align:center;opacity:0.6}
+.sb-link.active .ico{opacity:1}
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.main{
+  margin-left:var(--sidebar-w);margin-top:var(--header-h);
+  min-height:calc(100vh - var(--header-h));
+}
+.sec{display:none}
+.sec.on{display:block;animation:fadeIn 0.35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.page{max-width:1200px;margin:0 auto;padding:40px 32px 80px}
+.page-wide{max-width:1440px;margin:0 auto;padding:40px 32px 80px}
+
+/* ============================================================
+   HERO BANNER — Dramatic Warhammer style
+   ============================================================ */
+.hero{
+  position:relative;padding:80px 40px 70px;text-align:center;
+  background:linear-gradient(180deg,var(--bg-elevated) 0%,var(--bg) 100%);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,transparent 0%,var(--red) 30%,var(--gold) 50%,var(--red) 70%,transparent 100%);
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 20%,rgba(200,16,46,0.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-label{
+  font-family:var(--condensed);font-size:0.65rem;
+  text-transform:uppercase;letter-spacing:5px;
+  color:var(--gold);margin-bottom:16px;
+  display:inline-block;position:relative;
+}
+.hero-label::before,.hero-label::after{
+  content:'';position:absolute;top:50%;width:30px;height:1px;
+  background:var(--gold-dark);
+}
+.hero-label::before{right:calc(100% + 12px)}
+.hero-label::after{left:calc(100% + 12px)}
+.hero h1{
+  font-family:var(--heading);font-size:clamp(2.2rem,5.5vw,3.8rem);
+  font-weight:700;text-transform:uppercase;letter-spacing:2px;
+  line-height:1.1;color:var(--white);margin-bottom:16px;
+  position:relative;
+}
+.hero h1 .hl{color:var(--red)}
+.hero p{
+  font-family:var(--body);font-size:0.95rem;
+  color:var(--text-secondary);max-width:550px;
+  margin:0 auto;font-weight:300;line-height:1.8;
+  position:relative;
+}
+.hero-line{
+  width:50px;height:2px;margin:18px auto;
+  background:linear-gradient(90deg,var(--red),var(--gold));
+}
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+.sec-heading{
+  font-family:var(--heading);font-size:1.6rem;
+  font-weight:600;text-transform:uppercase;
+  letter-spacing:1.5px;color:var(--white);
+  margin:48px 0 6px;position:relative;
+  display:inline-block;
+}
+.sec-heading::after{
+  content:'';display:block;width:40px;height:2px;
+  background:var(--red);margin-top:8px;
+}
+.sec-sub{
+  color:var(--text-secondary);font-size:0.88rem;
+  font-weight:300;margin-bottom:28px;
+}
+
+/* ============================================================
+   CARDS — Dark, angular, Warhammer-esque
+   ============================================================ */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;margin:28px 0;
+}
+.crd{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  position:relative;overflow:hidden;
+  cursor:pointer;transition:var(--transition);
+  /* Angular cut on corner */
+  clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,0 100%);
+}
+.crd::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:2px;background:var(--red);
+  transform:scaleX(0);transition:transform 0.3s ease;
+  transform-origin:left;z-index:1;
+}
+.crd:hover{border-color:var(--border-hover);box-shadow:var(--shadow-glow)}
+.crd:hover::before{transform:scaleX(1)}
+.crd-body{padding:28px 24px}
+.crd-icon{font-size:2rem;margin-bottom:14px;display:block}
+.crd-title{
+  font-family:var(--heading);font-size:1rem;
+  font-weight:600;text-transform:uppercase;
+  letter-spacing:1px;color:var(--white);margin-bottom:8px;
+}
+.crd-desc{font-size:0.82rem;color:var(--text-secondary);line-height:1.7;font-weight:300}
+
+/* ============================================================
+   SWATCH GRID — Large paint chips
+   ============================================================ */
+.swatch-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  gap:12px;margin:24px 0;
+}
+.swatch-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  overflow:hidden;cursor:pointer;
+  transition:var(--transition);
+  border-radius:var(--radius);
+}
+.swatch-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.5);
+  border-color:var(--border-hover);
+}
+.swatch-block{
+  width:100%;aspect-ratio:1/1;
+  position:relative;
+}
+.swatch-block.met::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.25) 0%,transparent 50%,rgba(255,255,255,0.08) 100%);
+}
+.swatch-info{padding:12px 14px;border-top:1px solid var(--border)}
+.swatch-name{
+  font-family:var(--condensed);font-size:0.82rem;
+  font-weight:600;color:var(--text);
+  text-transform:uppercase;letter-spacing:0.5px;
+  margin-bottom:2px;
+}
+.swatch-brand{font-size:0.68rem;color:var(--text-muted);font-weight:400}
+.swatch-hex{
+  font-size:0.65rem;color:var(--text-dim);
+  font-family:'SF Mono','Fira Code',monospace;margin-top:3px;
+}
+
+/* Inline swatch */
+.sw-i{
+  width:28px;height:28px;border-radius:var(--radius);
+  border:1px solid var(--border-light);
+  display:inline-block;vertical-align:middle;flex-shrink:0;
+}
+
+/* ============================================================
+   TABLE — Dark, clean
+   ============================================================ */
+.tbl-wrap{
+  overflow-x:auto;margin:20px 0;
+  border:1px solid var(--border);border-radius:var(--radius-md);
+}
+.tbl{width:100%;border-collapse:collapse;font-size:0.82rem}
+.tbl thead{background:var(--red-dark)}
+.tbl th{
+  padding:12px 14px;text-align:left;font-weight:600;
+  font-family:var(--condensed);font-size:0.7rem;
+  text-transform:uppercase;letter-spacing:2px;
+  color:var(--white);white-space:nowrap;
+  border-bottom:none;
+}
+.tbl td{
+  padding:11px 14px;border-bottom:1px solid var(--border);
+  color:var(--text-secondary);vertical-align:middle;
+}
+.tbl tbody tr{transition:background 0.15s}
+.tbl tbody tr:hover td{background:var(--bg-card-hover)}
+.tbl tbody tr:last-child td{border-bottom:none}
+.tbl .pd{font-weight:600;color:var(--text)}
+.tbl .em{color:var(--text-dim);font-style:italic}
+
+/* ============================================================
+   FILTER CHIPS — Angular, Warhammer style
+   ============================================================ */
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:20px 0}
+.chip{
+  padding:7px 18px;font-family:var(--condensed);
+  font-size:0.75rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:1.5px;
+  background:var(--bg-card);border:1px solid var(--border);
+  color:var(--text-secondary);cursor:pointer;
+  transition:var(--transition);white-space:nowrap;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);
+}
+.chip:hover{border-color:var(--red);color:var(--text)}
+.chip.on{
+  background:var(--red);border-color:var(--red);
+  color:var(--white);
+}
+
+/* ============================================================
+   RECIPE CARDS
+   ============================================================ */
+.recipe-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(370px,1fr));
+  gap:16px;margin:24px 0;
+}
+.rcard{
+  background:var(--bg-card);border:1px solid var(--border);
+  overflow:hidden;transition:var(--transition);
+  border-radius:var(--radius);
+}
+.rcard:hover{border-color:var(--border-hover);box-shadow:var(--shadow)}
+.rcard-head{
+  padding:18px 22px 10px;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.rcard-head::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:2px;background:linear-gradient(90deg,var(--red),var(--gold));
+}
+.rcard-name{
+  font-family:var(--heading);font-size:1rem;
+  font-weight:600;text-transform:uppercase;
+  letter-spacing:1px;color:var(--white);margin-bottom:3px;
+}
+.rcard-type{
+  font-family:var(--condensed);font-size:0.62rem;
+  text-transform:uppercase;letter-spacing:2px;
+  color:var(--text-muted);
+}
+.rcard-grad{display:flex;height:56px}
+.rcard-grad .gs{
+  flex:1;position:relative;transition:flex 0.3s ease;
+}
+.rcard-grad:hover .gs{flex:1}
+.rcard-grad .gs:hover{flex:2.5}
+.rcard-grad .gs .gl{
+  position:absolute;bottom:5px;left:50%;
+  transform:translateX(-50%);
+  font-family:var(--condensed);font-size:0.5rem;
+  text-transform:uppercase;letter-spacing:1px;
+  color:rgba(255,255,255,0.9);
+  font-weight:600;white-space:nowrap;
+  text-shadow:0 1px 4px rgba(0,0,0,0.6);
+  opacity:0;transition:opacity 0.2s;
+}
+.rcard-grad .gs:hover .gl{opacity:1}
+.rcard-body{padding:16px 22px 20px}
+.rstep{
+  display:flex;align-items:center;gap:12px;
+  padding:8px 0;border-bottom:1px solid var(--border);
+}
+.rstep:last-child{border-bottom:none}
+.rstep-n{
+  font-family:var(--heading);font-size:0.7rem;
+  color:var(--text-dim);min-width:16px;font-weight:600;
+}
+.rstep-sw{
+  width:32px;height:32px;border-radius:var(--radius);
+  border:1px solid var(--border-light);flex-shrink:0;
+}
+.rstep-info{flex:1}
+.rstep-lbl{
+  font-family:var(--condensed);font-size:0.6rem;
+  text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--text-muted);font-weight:600;
+}
+.rstep-paint{font-size:0.85rem;color:var(--text);font-weight:400}
+
+/* ============================================================
+   FACTION CARDS — Dramatic accordion
+   ============================================================ */
+.faction-list{display:flex;flex-direction:column;gap:8px;margin:24px 0}
+.fcard{
+  background:var(--bg-card);border:1px solid var(--border);
+  overflow:hidden;transition:var(--transition);
+  border-radius:var(--radius);
+}
+.fcard:hover{border-color:var(--border-hover)}
+.fcard-head{
+  padding:16px 24px;display:flex;align-items:center;gap:16px;
+  cursor:pointer;user-select:none;transition:background 0.2s;
+  position:relative;
+}
+.fcard-head::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:3px;background:var(--red);opacity:0;
+  transition:opacity 0.2s;
+}
+.fcard:hover .fcard-head::before,.fcard.open .fcard-head::before{opacity:1}
+.fcard-head:hover{background:rgba(255,255,255,0.015)}
+.fcard-ico{
+  width:48px;height:48px;border-radius:var(--radius-md);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+  border:1px solid rgba(255,255,255,0.1);
+}
+.fcard-details{flex:1}
+.fcard-name{
+  font-family:var(--heading);font-size:1rem;
+  font-weight:600;text-transform:uppercase;
+  letter-spacing:1px;color:var(--white);
+}
+.fcard-game{
+  font-family:var(--condensed);font-size:0.62rem;
+  text-transform:uppercase;letter-spacing:2px;
+  color:var(--text-muted);margin-top:2px;
+}
+.fcard-swatches{display:flex;gap:4px;margin-top:6px}
+.fcard-swatches .fs{
+  width:18px;height:18px;border-radius:50%;
+  border:2px solid var(--bg-card);
+  box-shadow:0 0 0 1px var(--border-light);
+}
+.fcard-chev{
+  font-size:0.7rem;color:var(--text-muted);
+  transition:transform 0.3s ease;padding:6px;
+}
+.fcard.open .fcard-chev{transform:rotate(180deg)}
+.fcard-body{display:none;padding:0 24px 24px}
+.fcard.open .fcard-body{display:block;animation:fadeIn 0.25s ease}
+.fcard-ref{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;background:var(--bg-surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);font-size:0.7rem;
+  color:var(--text-muted);margin-bottom:16px;
+  font-family:var(--condensed);text-transform:uppercase;
+  letter-spacing:1px;
+}
+.el-row{
+  display:flex;gap:16px;padding:12px 0;
+  border-bottom:1px solid var(--border);
+  align-items:flex-start;
+}
+.el-row:last-child{border-bottom:none}
+.el-lbl{
+  font-family:var(--condensed);font-size:0.65rem;
+  text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--gold);font-weight:600;
+  min-width:120px;padding-top:2px;
+}
+.el-val{font-size:0.88rem;color:var(--text-secondary);flex:1;line-height:1.6}
+
+/* ============================================================
+   HOME GRID
+   ============================================================ */
+.home-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+  gap:16px;margin:36px 0;
+}
+
+/* Principles */
+.principles{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:12px;margin:24px 0;
+}
+.principle{
+  display:flex;gap:16px;padding:20px;
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);
+  transition:var(--transition);
+}
+.principle:hover{border-color:var(--border-hover)}
+.principle-n{
+  font-family:var(--heading);font-size:1.6rem;
+  color:var(--red);font-weight:700;line-height:1;
+  min-width:30px;opacity:0.5;
+}
+.principle-t{font-size:0.85rem;color:var(--text-secondary);line-height:1.7}
+.principle-t strong{color:var(--text)}
+
+/* Notes */
+.note{
+  padding:16px 20px;border-radius:var(--radius-md);
+  margin:20px 0;font-size:0.85rem;
+  display:flex;align-items:flex-start;gap:12px;
+  background:var(--bg-card);border:1px solid var(--border);
+  border-left:3px solid var(--red);
+}
+.note.gold{border-left-color:var(--gold)}
+.note-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+
+/* Resource cards */
+.res-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  padding:24px;transition:var(--transition);border-radius:var(--radius);
+}
+.res-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow)}
+.res-ico{font-size:1.6rem;margin-bottom:10px}
+.res-title{
+  font-family:var(--heading);font-size:0.9rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:1px;
+  color:var(--white);margin-bottom:6px;
+}
+.res-desc{font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:10px}
+.res-link{
+  font-family:var(--condensed);font-size:0.72rem;
+  text-transform:uppercase;letter-spacing:1px;
+  color:var(--gold);font-weight:600;
+  display:inline-flex;align-items:center;gap:4px;
+}
+.res-link:hover{color:var(--gold-light)}
+
+/* ============================================================
+   VIEW TOGGLE
+   ============================================================ */
+.view-toggle{
+  display:flex;gap:0;border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  margin-bottom:8px;display:inline-flex;
+}
+.view-btn{
+  padding:7px 16px;font-family:var(--condensed);
+  font-size:0.7rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:1.5px;background:var(--bg-card);
+  border:none;color:var(--text-muted);cursor:pointer;
+  transition:var(--transition);
+}
+.view-btn:not(:last-child){border-right:1px solid var(--border)}
+.view-btn:hover{color:var(--text)}
+.view-btn.on{background:var(--red);color:var(--white)}
+
+/* ============================================================
+   WASH SWATCH
+   ============================================================ */
+.wsw{
+  width:36px;height:20px;border-radius:2px;
+  display:inline-block;vertical-align:middle;
+  border:1px solid var(--border-light);opacity:0.8;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .menu-btn{display:flex}
+  .search-wrap{max-width:180px;margin:0 10px}
+  .page,.page-wide{padding:24px 16px 60px}
+  .hero{padding:50px 20px 45px}
+  .swatch-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+  .recipe-grid{grid-template-columns:1fr}
+  .card-grid{grid-template-columns:1fr}
+  .home-grid{grid-template-columns:1fr}
+  .el-row{flex-direction:column;gap:3px}
+  .el-lbl{min-width:unset}
+  .logo-sub{display:none}
+  .principles{grid-template-columns:1fr}
+}
+@media(max-width:500px){
+  .hero h1{font-size:1.8rem}
+  .swatch-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+}
+
+.sidebar-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,0.6);z-index:998;
+}
+.sidebar-overlay.active{display:block}
+
+.install-banner{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  background:var(--red);color:var(--white);
+  padding:12px 28px;font-family:var(--condensed);
+  font-size:0.8rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:2px;cursor:pointer;
+  box-shadow:var(--shadow-lg);z-index:2000;display:none;
+  animation:fadeIn 0.5s ease;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+}
+.install-banner:hover{background:var(--red-dark)}
+.install-banner .x{margin-left:14px;opacity:0.6;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="hdr">
+  <button class="menu-btn" onclick="togSB()" aria-label="Menu">☰</button>
+  <div class="logo">
+    MINI<span class="accent">PAINT</span>
+    <span class="logo-sub">Reference Guide</span>
+  </div>
+  <div class="search-wrap">
+    <span class="s-icon">⌕</span>
+    <input type="text" id="searchIn" placeholder="Search paints, factions..." autocomplete="off">
+    <div class="search-drop" id="searchDrop"></div>
+  </div>
+</header>
+
+<div class="sidebar-overlay" id="sbOverlay" onclick="togSB()"></div>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sb">
+  <div class="sb-section">
+    <div class="sb-title">Overview</div>
+    <a class="sb-link active" data-s="home" onclick="go('home')"><span class="ico">◉</span>Home</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Colour Reference</div>
+    <a class="sb-link" data-s="equiv" onclick="go('equiv')"><span class="ico">◧</span>Equivalents</a>
+    <a class="sb-link" data-s="recipes" onclick="go('recipes')"><span class="ico">◈</span>Recipes</a>
+    <a class="sb-link" data-s="materials" onclick="go('materials')"><span class="ico">◆</span>Materials</a>
+    <a class="sb-link" data-s="skin" onclick="go('skin')"><span class="ico">◎</span>Skin Tones</a>
+    <a class="sb-link" data-s="bases" onclick="go('bases')"><span class="ico">▣</span>Basing</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Warhammer 40,000</div>
+    <a class="sb-link" data-s="sm" onclick="go('sm')"><span class="ico">⚔</span>Space Marines</a>
+    <a class="sb-link" data-s="csm" onclick="go('csm')"><span class="ico">✦</span>Chaos Marines</a>
+    <a class="sb-link" data-s="imp" onclick="go('imp')"><span class="ico">⛨</span>Imperium</a>
+    <a class="sb-link" data-s="xenos" onclick="go('xenos')"><span class="ico">◬</span>Xenos</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Age of Sigmar</div>
+    <a class="sb-link" data-s="order" onclick="go('order')"><span class="ico">✧</span>Order</a>
+    <a class="sb-link" data-s="chaos" onclick="go('chaos')"><span class="ico">◮</span>Chaos</a>
+    <a class="sb-link" data-s="death" onclick="go('death')"><span class="ico">☽</span>Death</a>
+    <a class="sb-link" data-s="destr" onclick="go('destr')"><span class="ico">◉</span>Destruction</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Resources</div>
+    <a class="sb-link" data-s="washes" onclick="go('washes')"><span class="ico">◐</span>Washes</a>
+    <a class="sb-link" data-s="refs" onclick="go('refs')"><span class="ico">◫</span>References</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- HOME -->
+<div class="sec on" id="s-home">
+  <div class="hero">
+    <div class="hero-label">Miniature Painting</div>
+    <h1>THE <span class="hl">COMPLETE</span> PAINT<br>REFERENCE GUIDE</h1>
+    <div class="hero-line"></div>
+    <p>Cross-brand colour equivalents, faction colour schemes, layering recipes, skin tones, basing guides, and more — all in one place.</p>
+  </div>
+  <div class="page">
+    <div class="home-grid">
+      <div class="crd" onclick="go('equiv')">
+        <div class="crd-body">
+          <span class="crd-icon">◧</span>
+          <div class="crd-title">Colour Equivalents</div>
+          <div class="crd-desc">Cross-reference colours across Citadel, Vallejo, Army Painter, P3, Reaper, and more.</div>
+        </div>
+      </div>
+      <div class="crd" onclick="go('recipes')">
+        <div class="crd-body">
+          <span class="crd-icon">◈</span>
+          <div class="crd-title">Paint Recipes</div>
+          <div class="crd-desc">Base, shade, layer, and highlight combinations for every common armour colour and material.</div>
+        </div>
+      </div>
+      <div class="crd" onclick="go('sm')">
+        <div class="crd-body">
+          <span class="crd-icon">⚔</span>
+          <div class="crd-title">Faction Guides</div>
+          <div class="crd-desc">Complete painting guides for every major Warhammer 40K and Age of Sigmar faction.</div>
+        </div>
+      </div>
+      <div class="crd" onclick="go('skin')">
+        <div class="crd-body">
+          <span class="crd-icon">◎</span>
+          <div class="crd-title">Skin &amp; Materials</div>
+          <div class="crd-desc">Skin tones, leather, metal, wood, stone, gems, flames, and terrain bases.</div>
+        </div>
+      </div>
+    </div>
+    <h2 class="sec-heading">Fundamentals</h2>
+    <p class="sec-sub">Essential principles every miniature painter should know.</p>
+    <div class="principles">
+      <div class="principle"><div class="principle-n">01</div><div class="principle-t"><strong>Thin your paints</strong> — two thin coats always beats one thick coat. Aim for milk consistency.</div></div>
+      <div class="principle"><div class="principle-n">02</div><div class="principle-t"><strong>Prime first</strong> — black = dark & muted. White/grey = bright & vibrant. Match to desired outcome.</div></div>
+      <div class="principle"><div class="principle-n">03</div><div class="principle-t"><strong>Base → Shade → Layer → Highlight</strong> — the core workflow for painting any miniature.</div></div>
+      <div class="principle"><div class="principle-n">04</div><div class="principle-t"><strong>Equivalents are approximate</strong> — undertone, opacity and finish vary between brands.</div></div>
+      <div class="principle"><div class="principle-n">05</div><div class="principle-t"><strong>Washes go into recesses</strong> — they provide instant depth and definition to any model.</div></div>
+      <div class="principle"><div class="principle-n">06</div><div class="principle-t"><strong>Edge highlight</strong> — a fine line of lighter colour along edges brings a model to life.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EQUIVALENTS -->
+<div class="sec" id="s-equiv">
+  <div class="hero">
+    <div class="hero-label">Colour Reference</div>
+    <h1>PAINT <span class="hl">EQUIVALENTS</span></h1>
+    <div class="hero-line"></div>
+    <p>Cross-brand colour matching across major miniature paint manufacturers.</p>
+  </div>
+  <div class="page-wide">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <div class="view-toggle">
+        <button class="view-btn on" id="vGrid" onclick="setV('grid')">Swatches</button>
+        <button class="view-btn" id="vTable" onclick="setV('table')">Table</button>
+      </div>
+    </div>
+    <div class="filters" id="eqF">
+      <span class="chip on" data-f="all" onclick="fEq('all',this)">All</span>
+      <span class="chip" data-f="white" onclick="fEq('white',this)">Whites</span>
+      <span class="chip" data-f="black" onclick="fEq('black',this)">Blacks</span>
+      <span class="chip" data-f="grey" onclick="fEq('grey',this)">Greys</span>
+      <span class="chip" data-f="red" onclick="fEq('red',this)">Reds</span>
+      <span class="chip" data-f="orange" onclick="fEq('orange',this)">Oranges</span>
+      <span class="chip" data-f="yellow" onclick="fEq('yellow',this)">Yellows</span>
+      <span class="chip" data-f="green" onclick="fEq('green',this)">Greens</span>
+      <span class="chip" data-f="blue" onclick="fEq('blue',this)">Blues</span>
+      <span class="chip" data-f="purple" onclick="fEq('purple',this)">Purples</span>
+      <span class="chip" data-f="brown" onclick="fEq('brown',this)">Browns</span>
+      <span class="chip" data-f="flesh" onclick="fEq('flesh',this)">Flesh</span>
+      <span class="chip" data-f="metal-gold" onclick="fEq('metal-gold',this)">Golds</span>
+      <span class="chip" data-f="metal-silver" onclick="fEq('metal-silver',this)">Silvers</span>
+    </div>
+    <div id="gridV"></div>
+    <div id="tableV" style="display:none"></div>
+  </div>
+</div>
+
+<!-- RECIPES -->
+<div class="sec" id="s-recipes">
+  <div class="hero"><div class="hero-label">Painting Guide</div><h1>PAINT <span class="hl">RECIPES</span></h1><div class="hero-line"></div><p>Step-by-step colour combinations for armour, metallics, cloth, and effects.</p></div>
+  <div class="page-wide">
+    <div class="filters" id="rF">
+      <span class="chip on" data-f="all" onclick="fRec('all',this)">All</span>
+      <span class="chip" data-f="armour" onclick="fRec('armour',this)">Armour</span>
+      <span class="chip" data-f="metal" onclick="fRec('metal',this)">Metallics</span>
+      <span class="chip" data-f="fabric" onclick="fRec('fabric',this)">Cloth</span>
+      <span class="chip" data-f="organic" onclick="fRec('organic',this)">Organic</span>
+      <span class="chip" data-f="effects" onclick="fRec('effects',this)">Effects</span>
+    </div>
+    <div class="recipe-grid" id="recC"></div>
+  </div>
+</div>
+
+<!-- MATERIALS -->
+<div class="sec" id="s-materials">
+  <div class="hero"><div class="hero-label">Technique Guide</div><h1>PAINTING <span class="hl">MATERIALS</span></h1><div class="hero-line"></div><p>How to paint metals, stone, wood, leather, gems, and more.</p></div>
+  <div class="page-wide"><div class="recipe-grid" id="matC"></div></div>
+</div>
+
+<!-- SKIN -->
+<div class="sec" id="s-skin">
+  <div class="hero"><div class="hero-label">Character Painting</div><h1>SKIN <span class="hl">TONES</span></h1><div class="hero-line"></div><p>Recipes for human, xenos, daemon, and undead skin.</p></div>
+  <div class="page-wide"><div class="recipe-grid" id="skinC"></div></div>
+</div>
+
+<!-- BASES -->
+<div class="sec" id="s-bases">
+  <div class="hero"><div class="hero-label">Terrain</div><h1>BASING <span class="hl">GUIDE</span></h1><div class="hero-line"></div><p>Terrain and base recipes for every environment.</p></div>
+  <div class="page-wide"><div class="recipe-grid" id="baseC"></div></div>
+</div>
+
+<!-- FACTION SECTIONS -->
+<div class="sec" id="s-sm">
+  <div class="hero"><div class="hero-label">Warhammer 40,000</div><h1>SPACE <span class="hl">MARINES</span></h1><div class="hero-line"></div><p>Chapter painting guides for the Adeptus Astartes.</p></div>
+  <div class="page">
+    <div class="note gold"><span class="note-ico">📷</span><div>Visit <a href="https://www.games-workshop.com" target="_blank">games-workshop.com</a> or the free <strong>Citadel Colour App</strong> for photographic step-by-step references.</div></div>
+    <div class="faction-list" id="fc-sm"></div>
+  </div>
+</div>
+<div class="sec" id="s-csm"><div class="hero"><div class="hero-label">Warhammer 40,000</div><h1>CHAOS <span class="hl">MARINES</span></h1><div class="hero-line"></div><p>Traitor Legion painting guides.</p></div><div class="page"><div class="faction-list" id="fc-csm"></div></div></div>
+<div class="sec" id="s-imp"><div class="hero"><div class="hero-label">Warhammer 40,000</div><h1>FORCES OF THE <span class="hl">IMPERIUM</span></h1><div class="hero-line"></div><p>Astra Militarum, Mechanicus, Custodes, Sororitas.</p></div><div class="page"><div class="faction-list" id="fc-imp"></div></div></div>
+<div class="sec" id="s-xenos"><div class="hero"><div class="hero-label">Warhammer 40,000</div><h1><span class="hl">XENOS</span> FACTIONS</h1><div class="hero-line"></div><p>Aeldari, Orks, Tyranids, Necrons, T'au, and more.</p></div><div class="page"><div class="faction-list" id="fc-xenos"></div></div></div>
+<div class="sec" id="s-order"><div class="hero"><div class="hero-label">Age of Sigmar</div><h1>GRAND ALLIANCE <span class="hl">ORDER</span></h1><div class="hero-line"></div><p>Stormcast, Lumineth, Sylvaneth, Deepkin, and allies.</p></div><div class="page"><div class="faction-list" id="fc-order"></div></div></div>
+<div class="sec" id="s-chaos"><div class="hero"><div class="hero-label">Age of Sigmar</div><h1>GRAND ALLIANCE <span class="hl">CHAOS</span></h1><div class="hero-line"></div><p>Dark Gods, Skaven, and their mortal followers.</p></div><div class="page"><div class="faction-list" id="fc-chaos"></div></div></div>
+<div class="sec" id="s-death"><div class="hero"><div class="hero-label">Age of Sigmar</div><h1>GRAND ALLIANCE <span class="hl">DEATH</span></h1><div class="hero-line"></div><p>Vampires, ghosts, ghouls, and the legions of bone.</p></div><div class="page"><div class="faction-list" id="fc-death"></div></div></div>
+<div class="sec" id="s-destr"><div class="hero"><div class="hero-label">Age of Sigmar</div><h1>GRAND ALLIANCE <span class="hl">DESTRUCTION</span></h1><div class="hero-line"></div><p>Orruks, Grots, Ogors, and Gargants.</p></div><div class="page"><div class="faction-list" id="fc-destr"></div></div></div>
+
+<!-- WASHES -->
+<div class="sec" id="s-washes">
+  <div class="hero"><div class="hero-label">Quick Reference</div><h1>WASHES &amp; <span class="hl">CONTRASTS</span></h1><div class="hero-line"></div><p>Cross-brand wash equivalents and Contrast / Speed Paint comparisons.</p></div>
+  <div class="page-wide" id="washC"></div>
+</div>
+
+<!-- REFS -->
+<div class="sec" id="s-refs">
+  <div class="hero"><div class="hero-label">External</div><h1>IMAGE <span class="hl">REFERENCES</span></h1><div class="hero-line"></div><p>Where to find painted examples, tutorials, and inspiration.</p></div>
+  <div class="page"><div class="home-grid" id="refC"></div></div>
+</div>
+
+</main>
+
+<div class="install-banner" id="instB" onclick="instApp()">⬇ Install App <span class="x" onclick="event.stopPropagation();document.getElementById('instB').style.display='none'">✕</span></div>
+
+<script>
+// ============================================================
+// DATA — Same comprehensive data from previous version
+// ============================================================
+const P=[
+{c:"white",d:"Pure White",h:"#ffffff",ci:"White Scar (L)",va:"White 70.951",vg:"Dead White 72.001",ap:"Matt White",p3:"Morrow White",re:"Pure White 09039"},
+{c:"white",d:"Off-White / Ivory",h:"#f2e5c0",ci:"Screaming Skull (L)",va:"Ivory 70.918",vg:"Bonewhite 72.034",ap:"Skeleton Bone",p3:"Menoth White Hi",re:"Yellowed Bone 09143"},
+{c:"white",d:"Grey White",h:"#d8dce0",ci:"Ulthuan Grey (L)",va:"Pale Greyblue 70.907",vg:"Ghost Grey 72.046",ap:"Ash Grey",p3:"—",re:"Misty Grey 09088"},
+{c:"white",d:"Warm White",h:"#f0e0d0",ci:"Pallid Wych Flesh (L)",va:"Light Flesh 70.928",vg:"—",ap:"—",p3:"—",re:"—"},
+{c:"white",d:"Wraithbone",h:"#e8d8b4",ci:"Wraithbone (B)",va:"Iraqi Sand 70.819",vg:"—",ap:"Skeleton Bone Primer",p3:"—",re:"—"},
+{c:"black",d:"Pure Black",h:"#1a1a1a",ci:"Abaddon Black (B)",va:"Black 70.950",vg:"Black 72.051",ap:"Matt Black",p3:"Thamar Black",re:"Pure Black 09037"},
+{c:"black",d:"Blue-Black",h:"#0d1b2a",ci:"Night Lords Blue (B)",va:"Dk Prussian Blue 70.899",vg:"—",ap:"—",p3:"—",re:"—"},
+{c:"black",d:"Warm Black",h:"#2a2a28",ci:"Corvus Black (B)",va:"Black Grey 70.862",vg:"Charcoal 72.048",ap:"Dark Stone",p3:"—",re:"—"},
+{c:"grey",d:"Very Dark Grey",h:"#3d3d3d",ci:"Skavenblight Dinge (B)",va:"German Grey 70.995",vg:"Cold Grey 72.050",ap:"—",p3:"—",re:"—"},
+{c:"grey",d:"Standard Grey",h:"#525455",ci:"Mechanicus Std Grey (B)",va:"Neutral Grey 70.992",vg:"Sombre Grey 72.048",ap:"Uniform Grey",p3:"Greatcoat Grey",re:"Stone Grey 09027"},
+{c:"grey",d:"Medium Grey",h:"#7a7d80",ci:"Dawnstone (L)",va:"Basalt Grey 70.869",vg:"Stonewall Grey 72.049",ap:"Ash Grey",p3:"Trollblood Base",re:"Cloudy Grey 09025"},
+{c:"grey",d:"Light Grey",h:"#a0a3a6",ci:"Administratum Grey (L)",va:"Light Grey 70.990",vg:"Ghost Grey 72.046",ap:"Ash Grey",p3:"Trollblood Hi",re:"Misty Grey 09088"},
+{c:"grey",d:"Blue Grey",h:"#3d5a6e",ci:"The Fang (B)",va:"Dk Blue Grey 70.867",vg:"—",ap:"—",p3:"Underbelly Blue",re:"—"},
+{c:"grey",d:"Fenrisian Grey",h:"#6db0c5",ci:"Fenrisian Grey (L)",va:"Blue Grey Pale 70.905",vg:"Wolf Grey 72.047",ap:"—",p3:"Frostbite",re:"—"},
+{c:"red",d:"Very Dark Red",h:"#6a0001",ci:"Khorne Red (B)",va:"Hull Red 70.985",vg:"Scarlett Red 72.012",ap:"Crusted Sore",p3:"Sanguine Base",re:"Carnage Red 09135"},
+{c:"red",d:"Crimson Red",h:"#9a1115",ci:"Mephiston Red (B)",va:"Carmine Red 70.908",vg:"Bloody Red 72.010",ap:"Pure Red",p3:"Khador Red Base",re:"Blood Red 09279"},
+{c:"red",d:"Bright Red",h:"#c01411",ci:"Evil Sunz Scarlet (L)",va:"Vermillion 70.909",vg:"Hot Orange 72.009",ap:"Mars Red",p3:"Khador Red Hi",re:"Fire Red 09004"},
+{c:"red",d:"Orange-Red",h:"#e82e1b",ci:"Wild Rider Red (L)",va:"Bright Orange 70.851",vg:"—",ap:"Lava Orange",p3:"—",re:"—"},
+{c:"red",d:"Pink-Red",h:"#8c2042",ci:"Wazdakka Red (B)",va:"Magenta 70.945",vg:"—",ap:"—",p3:"—",re:"—"},
+{c:"orange",d:"Burnt Orange",h:"#c45a20",ci:"Jokaero Orange (B)",va:"Orange Brown 70.981",vg:"Scrofulous Brown 72.038",ap:"—",p3:"—",re:"—"},
+{c:"orange",d:"Bright Orange",h:"#f08030",ci:"Troll Slayer Orange (L)",va:"Light Orange 70.911",vg:"Hot Orange 72.009",ap:"Lava Orange",p3:"Heartfire",re:"Fire Orange 09006"},
+{c:"orange",d:"Fire Orange",h:"#ff9933",ci:"Fire Dragon Bright (L)",va:"—",vg:"—",ap:"—",p3:"—",re:"—"},
+{c:"yellow",d:"Dark Yellow / Ochre",h:"#fbb81c",ci:"Averland Sunset (B)",va:"Gold Yellow 70.948",vg:"Heavy Goldbrown 72.151",ap:"Daemonic Yellow",p3:"Cygnus Yellow",re:"Palomino Gold 09074"},
+{c:"yellow",d:"Bright Yellow",h:"#ffd900",ci:"Yriel Yellow (L)",va:"Deep Yellow 70.915",vg:"Sunblast Yellow 72.006",ap:"Daemonic Yellow",p3:"—",re:"Sun Yellow 09008"},
+{c:"yellow",d:"Pale Yellow",h:"#fff300",ci:"Flash Gitz Yellow (L)",va:"Flat Yellow 70.953",vg:"—",ap:"—",p3:"—",re:"Lemon Yellow 09107"},
+{c:"blue",d:"Very Dark Blue",h:"#02385e",ci:"Kantor Blue (B)",va:"Dk Prussia Blue 70.899",vg:"Imperial Blue 72.020",ap:"Crystal Blue",p3:"—",re:"Breonne Blue 09055"},
+{c:"blue",d:"Ultramarine Blue",h:"#0d407f",ci:"Macragge Blue (B)",va:"Blue 70.925",vg:"Ultramarine 72.022",ap:"Ultramarine Blue",p3:"Cygnar Blue Base",re:"Ultramarine 09187"},
+{c:"blue",d:"Medium Blue",h:"#366699",ci:"Caledor Sky (B)",va:"Flat Blue 70.962",vg:"Magic Blue 72.021",ap:"Crystal Blue",p3:"Cygnar Blue Hi",re:"Cyan Blue 09117"},
+{c:"blue",d:"Bright Blue",h:"#4488cc",ci:"Teclis Blue (L)",va:"Andrea Blue 70.841",vg:"—",ap:"—",p3:"Arcane Blue",re:"—"},
+{c:"blue",d:"Light Blue",h:"#6db8d8",ci:"Lothern Blue (L)",va:"Azure 70.902",vg:"Electric Blue 72.023",ap:"—",p3:"—",re:"—"},
+{c:"blue",d:"Turquoise",h:"#00758a",ci:"Thousand Sons Blue (B)",va:"Lt Turquoise 70.840",vg:"—",ap:"Hydra Turquoise",p3:"—",re:"—"},
+{c:"blue",d:"Dark Turquoise",h:"#006066",ci:"Sotek Green (B)",va:"Turquoise 70.966",vg:"Scurvy Green 72.027",ap:"—",p3:"—",re:"Marine Teal 09077"},
+{c:"green",d:"Very Dark Green",h:"#00401a",ci:"Caliban Green (B)",va:"Black Green 70.980",vg:"Dark Green 72.028",ap:"Army Green",p3:"—",re:"Jungle Moss 09082"},
+{c:"green",d:"Dark Green",h:"#1e7331",ci:"Warpstone Glow (L)",va:"Intermediate Green 70.891",vg:"Goblin Green 72.030",ap:"Greenskin",p3:"—",re:"—"},
+{c:"green",d:"Bright Green",h:"#52b244",ci:"Moot Green (L)",va:"Light Green 70.942",vg:"Scorpy Green 72.032",ap:"Goblin Green",p3:"—",re:"—"},
+{c:"green",d:"Olive Green",h:"#4a5a30",ci:"Castellan Green (B)",va:"Reflective Green 70.890",vg:"Camo Green 72.031",ap:"Army Green",p3:"Traitor Green",re:"—"},
+{c:"green",d:"Pale Green",h:"#b0c890",ci:"Nurgling Green (L)",va:"Pale Green 70.971",vg:"—",ap:"—",p3:"—",re:"—"},
+{c:"green",d:"Dark Teal",h:"#003838",ci:"Incubi Darkness (B)",va:"Dk Sea Green 70.868",vg:"Scurvy Green 72.027",ap:"—",p3:"—",re:"—"},
+{c:"brown",d:"Very Dark Brown",h:"#4b2d10",ci:"Rhinox Hide (B)",va:"Chocolate Brown 70.872",vg:"Charred Brown 72.045",ap:"Oak Brown",p3:"Umbral Umber",re:"Walnut Brown 09136"},
+{c:"brown",d:"Medium Brown",h:"#7a4a28",ci:"Mournfang Brown (B)",va:"Flat Brown 70.984",vg:"Beasty Brown 72.043",ap:"Monster Brown",p3:"Bootstrap Leather",re:"Intense Brown 09138"},
+{c:"brown",d:"Leather Brown",h:"#8a6530",ci:"XV-88 (B)",va:"Green Brown 70.879",vg:"Earth 72.062",ap:"Leather Brown",p3:"Gun Corps Brown",re:"—"},
+{c:"brown",d:"Sandy Brown",h:"#b5a36a",ci:"Zandri Dust (B)",va:"Dark Yellow 70.978",vg:"Heavy Goldbrown 72.151",ap:"—",p3:"—",re:"—"},
+{c:"brown",d:"Bone",h:"#d4c490",ci:"Ushabti Bone (L)",va:"Buff 70.976",vg:"Bonewhite 72.034",ap:"Skeleton Bone",p3:"Jack Bone",re:"Aged Bone 09121"},
+{c:"brown",d:"Red-Brown",h:"#6a2a18",ci:"Doombull Brown (B)",va:"Burnt Red 70.814",vg:"—",ap:"Fur Brown",p3:"Bloodstone",re:"—"},
+{c:"purple",d:"Very Dark Purple",h:"#3d2451",ci:"Naggaroth Night (B)",va:"Royal Purple 70.810",vg:"Hexed Lichen 72.015",ap:"—",p3:"—",re:"—"},
+{c:"purple",d:"Rich Purple",h:"#4b2c74",ci:"Xereus Purple (L)",va:"Blue Violet 70.811",vg:"Warlord Purple 72.014",ap:"Alien Purple",p3:"—",re:"—"},
+{c:"purple",d:"Bright Purple",h:"#7a50a0",ci:"Genestealer Purple (L)",va:"Violet 70.960",vg:"—",ap:"—",p3:"Beaten Purple",re:"—"},
+{c:"purple",d:"Magenta",h:"#7c1c5a",ci:"Screamer Pink (B)",va:"Magenta 70.945",vg:"—",ap:"Pixie Pink",p3:"—",re:"—"},
+{c:"purple",d:"Bright Pink",h:"#b04080",ci:"Pink Horror (L)",va:"—",vg:"Squid Pink 72.013",ap:"Pixie Pink",p3:"—",re:"—"},
+{c:"purple",d:"Pale Pink",h:"#e080b0",ci:"Emperor's Children (L)",va:"—",vg:"—",ap:"—",p3:"—",re:"—"},
+{c:"flesh",d:"Pale Flesh Base",h:"#c0a890",ci:"Rakarth Flesh (B)",va:"Pale Sand 70.837",vg:"—",ap:"—",p3:"—",re:"Fair Skin 09047"},
+{c:"flesh",d:"Medium Flesh",h:"#a0623b",ci:"Bugman's Glow (B)",va:"Flat Flesh 70.955",vg:"Tan 72.066",ap:"Tanned Flesh",p3:"Midlund Flesh",re:"Tanned Skin 09044"},
+{c:"flesh",d:"Flesh Layer",h:"#c48a5c",ci:"Cadian Fleshtone (L)",va:"Basic Skintone 70.815",vg:"Elf Skintone 72.004",ap:"—",p3:"—",re:"—"},
+{c:"flesh",d:"Flesh Highlight",h:"#d8b088",ci:"Kislev Flesh (L)",va:"Light Flesh 70.928",vg:"—",ap:"—",p3:"Ryn Flesh",re:"Fair Hi 09048"},
+{c:"flesh",d:"Dark Skin",h:"#6a4030",ci:"Catachan Fleshtone (B)",va:"Flat Earth 70.983",vg:"Dk Fleshtone 72.044",ap:"—",p3:"—",re:"Dark Skin 09268"},
+{c:"metal-gold",d:"Dark Bronze",h:"#4a3020",ci:"Warplock Bronze (B)",va:"Bronze 70.998",vg:"—",ap:"—",p3:"—",re:"—"},
+{c:"metal-gold",d:"Dark Gold",h:"#7a5a20",ci:"Balthasar Gold (B)",va:"Tinny Tin 70.997",vg:"Brassy Brass 72.058",ap:"Weapon Bronze",p3:"Molten Bronze",re:"—"},
+{c:"metal-gold",d:"Rich Gold",h:"#b5860c",ci:"Retributor Armour (B)",va:"Old Gold 70.878",vg:"Glorious Gold 72.056",ap:"Greedy Gold",p3:"Rhulic Gold",re:"Antique Gold 09050"},
+{c:"metal-gold",d:"Bright Gold",h:"#d4a940",ci:"Auric Armour Gold (L)",va:"Gold 70.996",vg:"Polished Gold 72.055",ap:"—",p3:"—",re:"—"},
+{c:"metal-gold",d:"Pale Gold",h:"#e0c060",ci:"Liberator Gold (L)",va:"—",vg:"—",ap:"—",p3:"—",re:"—"},
+{c:"metal-gold",d:"Copper",h:"#b06030",ci:"Hashut Copper (L)",va:"Copper 70.999",vg:"Hammered Copper 72.059",ap:"—",p3:"—",re:"—"},
+{c:"metal-silver",d:"Gunmetal",h:"#6a6a6a",ci:"Leadbelcher (B)",va:"Gunmetal Grey 70.863",vg:"Gunmetal 72.054",ap:"Gun Metal",p3:"Pig Iron",re:"Honed Steel 09053"},
+{c:"metal-silver",d:"Medium Silver",h:"#a0a0a0",ci:"Ironbreaker (L)",va:"Natural Steel 70.864",vg:"Chain Mail 72.053",ap:"Shining Silver",p3:"Cold Steel",re:"—"},
+{c:"metal-silver",d:"Bright Silver",h:"#d0d0d0",ci:"Stormhost Silver (L)",va:"Silver 70.997",vg:"Silver 72.052",ap:"Plate Mail",p3:"Quick Silver",re:"—"},
+{c:"metal-silver",d:"Dark Iron",h:"#505050",ci:"Iron Warriors (B)",va:"Oily Steel 70.865",vg:"—",ap:"—",p3:"—",re:"—"},
+];
+
+const R=[
+{n:"Red Armour",t:"armour",s:[{l:"Base",p:"Mephiston Red",h:"#9a1115"},{l:"Shade",p:"Nuln Oil",h:"#1a1a1a"},{l:"Layer",p:"Evil Sunz Scarlet",h:"#c01411"},{l:"Highlight",p:"Wild Rider Red",h:"#e82e1b"},{l:"Edge",p:"Fire Dragon Bright",h:"#ff9933"}]},
+{n:"Dark Red Armour",t:"armour",s:[{l:"Base",p:"Khorne Red",h:"#6a0001"},{l:"Shade",p:"Nuln Oil",h:"#1a1a1a"},{l:"Layer",p:"Mephiston Red",h:"#9a1115"},{l:"Highlight",p:"Evil Sunz Scarlet",h:"#c01411"},{l:"Edge",p:"Wild Rider Red",h:"#e82e1b"}]},
+{n:"Blue Armour",t:"armour",s:[{l:"Base",p:"Macragge Blue",h:"#0d407f"},{l:"Shade",p:"Nuln Oil",h:"#1a1a1a"},{l:"Layer",p:"Caledor Sky",h:"#366699"},{l:"Highlight",p:"Teclis Blue",h:"#4488cc"},{l:"Edge",p:"Baharroth Blue",h:"#6db8d8"}]},
+{n:"Green Armour",t:"armour",s:[{l:"Base",p:"Caliban Green",h:"#00401a"},{l:"Shade",p:"Nuln Oil",h:"#1a1a1a"},{l:"Layer",p:"Warpstone Glow",h:"#1e7331"},{l:"Highlight",p:"Moot Green",h:"#52b244"},{l:"Edge",p:"Gauss Blaster Green",h:"#80e0a0"}]},
+{n:"Yellow Armour",t:"armour",s:[{l:"Prime",p:"Wraithbone",h:"#e8d8b4"},{l:"Base",p:"Averland Sunset",h:"#fbb81c"},{l:"Shade",p:"Casandora Yellow",h:"#e8a010"},{l:"Layer",p:"Yriel Yellow",h:"#ffd900"},{l:"Edge",p:"Flash Gitz Yellow",h:"#fff300"}]},
+{n:"Black Armour",t:"armour",s:[{l:"Base",p:"Abaddon Black",h:"#1a1a1a"},{l:"Layer",p:"Dark Reaper",h:"#2a4a50"},{l:"Highlight",p:"Thunderhawk Blue",h:"#4a6a78"},{l:"Edge",p:"Fenrisian Grey",h:"#6db0c5"}]},
+{n:"White Armour",t:"armour",s:[{l:"Prime",p:"Grey Seer",h:"#c0c4c4"},{l:"Base",p:"Celestra Grey",h:"#9ca5a8"},{l:"Shade",p:"Apothecary White",h:"#d0d8d8"},{l:"Layer",p:"Ulthuan Grey",h:"#d8dce0"},{l:"Edge",p:"White Scar",h:"#ffffff"}]},
+{n:"Gold Armour",t:"metal",s:[{l:"Base",p:"Retributor Armour",h:"#b5860c"},{l:"Shade",p:"Reikland Fleshshade",h:"#c08040"},{l:"Layer",p:"Auric Armour Gold",h:"#d4a940"},{l:"Highlight",p:"Liberator Gold",h:"#e0c060"},{l:"Edge",p:"Stormhost Silver",h:"#d0d0d0"}]},
+{n:"Silver Steel",t:"metal",s:[{l:"Base",p:"Leadbelcher",h:"#6a6a6a"},{l:"Shade",p:"Nuln Oil",h:"#1a1a1a"},{l:"Layer",p:"Ironbreaker",h:"#a0a0a0"},{l:"Edge",p:"Stormhost Silver",h:"#d0d0d0"}]},
+{n:"Bronze / Copper",t:"metal",s:[{l:"Base",p:"Warplock Bronze",h:"#4a3020"},{l:"Shade",p:"Agrax Earthshade",h:"#3a2a10"},{l:"Layer",p:"Hashut Copper",h:"#b06030"},{l:"Highlight",p:"Sycorax Bronze",h:"#c09060"},{l:"Edge",p:"Stormhost Silver",h:"#d0d0d0"}]},
+{n:"Bone / Ivory",t:"organic",s:[{l:"Base",p:"Zandri Dust",h:"#b5a36a"},{l:"Shade",p:"Agrax Earthshade",h:"#3a2a10"},{l:"Layer",p:"Ushabti Bone",h:"#d4c490"},{l:"Highlight",p:"Screaming Skull",h:"#f2e5c0"},{l:"Edge",p:"White Scar",h:"#ffffff"}]},
+{n:"Brown Leather",t:"fabric",s:[{l:"Base",p:"XV-88",h:"#8a6530"},{l:"Shade",p:"Agrax Earthshade",h:"#3a2a10"},{l:"Layer",p:"Balor Brown",h:"#a88540"},{l:"Highlight",p:"Ushabti Bone",h:"#d4c490"}]},
+{n:"Red Cloth",t:"fabric",s:[{l:"Base",p:"Khorne Red",h:"#6a0001"},{l:"Shade",p:"Nuln Oil",h:"#1a1a1a"},{l:"Layer",p:"Mephiston Red",h:"#9a1115"},{l:"Highlight",p:"Evil Sunz Scarlet",h:"#c01411"},{l:"Edge",p:"Wild Rider Red",h:"#e82e1b"}]},
+{n:"Cream Parchment",t:"fabric",s:[{l:"Base",p:"Rakarth Flesh",h:"#c0a890"},{l:"Shade",p:"Agrax Earthshade",h:"#3a2a10"},{l:"Layer",p:"Pallid Wych Flesh",h:"#f0e0d0"},{l:"Edge",p:"White Scar",h:"#ffffff"}]},
+{n:"Ork Green Skin",t:"organic",s:[{l:"Base",p:"Waaagh! Flesh",h:"#1a4a20"},{l:"Shade",p:"Biel-Tan Green",h:"#105020"},{l:"Layer",p:"Warpstone Glow",h:"#1e7331"},{l:"Highlight",p:"Skarsnik Green",h:"#5a9050"},{l:"Fine",p:"Nurgling Green",h:"#b0c890"}]},
+{n:"Fire / Flames",t:"effects",s:[{l:"Core",p:"White Scar",h:"#ffffff"},{l:"Inner",p:"Yriel Yellow",h:"#ffd900"},{l:"Middle",p:"Troll Slayer Orange",h:"#f08030"},{l:"Outer",p:"Mephiston Red",h:"#9a1115"},{l:"Tips",p:"Khorne Red",h:"#6a0001"}]},
+{n:"Rusted Metal",t:"effects",s:[{l:"Base",p:"Leadbelcher",h:"#6a6a6a"},{l:"Texture",p:"Typhus Corrosion",h:"#4a3a2a"},{l:"Drybrush",p:"Ryza Rust",h:"#c06030"},{l:"Edge",p:"Ironbreaker",h:"#a0a0a0"}]},
+{n:"Verdigris Bronze",t:"effects",s:[{l:"Base",p:"Warplock Bronze",h:"#4a3020"},{l:"Shade",p:"Agrax Earthshade",h:"#3a2a10"},{l:"Verdigris",p:"Nihilakh Oxide",h:"#60c0a0"},{l:"Raised",p:"Hashut Copper",h:"#b06030"},{l:"Edge",p:"Sycorax Bronze",h:"#c09060"}]},
+{n:"Green Gem",t:"effects",s:[{l:"Base",p:"Warpstone Glow",h:"#1e7331"},{l:"Shade",p:"Biel-Tan Green",h:"#105020"},{l:"Layer",p:"Moot Green",h:"#52b244"},{l:"Highlight",p:"Gauss Blaster",h:"#80e0a0"},{l:"Spot",p:"White Scar",h:"#ffffff"}]},
+];
+
+const SK=[
+{n:"Light Caucasian",i:"👱",s:[{l:"Base",p:"Bugman's Glow",h:"#a0623b"},{l:"Shade",p:"Reikland Fleshshade",h:"#c08040"},{l:"Layer",p:"Cadian Fleshtone",h:"#c48a5c"},{l:"Highlight",p:"Kislev Flesh",h:"#d8b088"},{l:"Fine",p:"Flayed One Flesh",h:"#e8d0b0"}]},
+{n:"Very Pale / Nordic",i:"🧝",s:[{l:"Base",p:"Rakarth Flesh",h:"#c0a890"},{l:"Shade",p:"Reikland Fleshshade",h:"#c08040"},{l:"Layer",p:"Pallid Wych Flesh",h:"#f0e0d0"},{l:"Highlight",p:"White Scar",h:"#ffffff"}]},
+{n:"Dark African",i:"👤",s:[{l:"Base",p:"Catachan Fleshtone",h:"#6a4030"},{l:"Shade",p:"Nuln Oil",h:"#1a1a1a"},{l:"Layer",p:"Doombull Brown",h:"#6a2a18"},{l:"Highlight",p:"Skrag Brown",h:"#a06030"},{l:"Fine",p:"Deathclaw Brown",h:"#c08050"}]},
+{n:"Undead / Vampire",i:"🧛",s:[{l:"Base",p:"Rakarth Flesh",h:"#c0a890"},{l:"Shade",p:"Druchii Violet",h:"#6040a0"},{l:"Layer",p:"Pallid Wych Flesh",h:"#f0e0d0"},{l:"Highlight",p:"White Scar",h:"#ffffff"}]},
+{n:"Ork Green",i:"💚",s:[{l:"Base",p:"Waaagh! Flesh",h:"#1a4a20"},{l:"Shade",p:"Biel-Tan Green",h:"#105020"},{l:"Layer",p:"Warpstone Glow",h:"#1e7331"},{l:"Highlight",p:"Skarsnik Green",h:"#5a9050"},{l:"Fine",p:"Nurgling Green",h:"#b0c890"}]},
+{n:"Slaanesh Daemon",i:"💜",s:[{l:"Base",p:"Daemonette Hide",h:"#8070a0"},{l:"Shade",p:"Druchii Violet",h:"#6040a0"},{l:"Layer",p:"Slaanesh Grey",h:"#b0a0c0"},{l:"Highlight",p:"Pallid Wych Flesh",h:"#f0e0d0"}]},
+{n:"Khorne Daemon",i:"❤️",s:[{l:"Base",p:"Khorne Red",h:"#6a0001"},{l:"Shade",p:"Carroburg Crimson",h:"#800030"},{l:"Layer",p:"Mephiston Red",h:"#9a1115"},{l:"Highlight",p:"Evil Sunz Scarlet",h:"#c01411"}]},
+{n:"Nurgle Sickly",i:"🤢",s:[{l:"Base",p:"Death Guard Green",h:"#6a7a48"},{l:"Shade",p:"Agrax Earthshade",h:"#3a2a10"},{l:"Layer",p:"Elysian Green",h:"#8a9858"},{l:"Highlight",p:"Ogryn Camo",h:"#a0b068"}]},
+{n:"T'au Blue-Grey",i:"🔵",s:[{l:"Base",p:"The Fang",h:"#3d5a6e"},{l:"Shade",p:"Nuln Oil",h:"#1a1a1a"},{l:"Layer",p:"Russ Grey",h:"#6080a0"},{l:"Highlight",p:"Fenrisian Grey",h:"#6db0c5"}]},
+{n:"Zombie Necrotic",i:"🧟",s:[{l:"Base",p:"Rakarth Flesh",h:"#c0a890"},{l:"Shade",p:"Athonian Camoshade",h:"#4a5a20"},{l:"Layer",p:"Pallid Wych Flesh",h:"#f0e0d0"},{l:"Bruising",p:"Druchii Violet",h:"#6040a0"}]},
+];
+
+const MA=[
+{n:"Steel / Iron",i:"⚔️",s:[{l:"Base",p:"Leadbelcher",h:"#6a6a6a"},{l:"Shade",p:"Nuln Oil",h:"#1a1a1a"},{l:"Layer",p:"Ironbreaker",h:"#a0a0a0"},{l:"Edge",p:"Stormhost Silver",h:"#d0d0d0"}]},
+{n:"Gold (Warm)",i:"👑",s:[{l:"Base",p:"Retributor Armour",h:"#b5860c"},{l:"Shade",p:"Reikland Fleshshade",h:"#c08040"},{l:"Layer",p:"Auric Armour Gold",h:"#d4a940"},{l:"Highlight",p:"Liberator Gold",h:"#e0c060"},{l:"Fine",p:"Stormhost Silver",h:"#d0d0d0"}]},
+{n:"Bronze",i:"🏺",s:[{l:"Base",p:"Warplock Bronze",h:"#4a3020"},{l:"Shade",p:"Agrax Earthshade",h:"#3a2a10"},{l:"Layer",p:"Hashut Copper",h:"#b06030"},{l:"Edge",p:"Sycorax Bronze",h:"#c09060"}]},
+{n:"Dark Wood",i:"🪵",s:[{l:"Base",p:"Dryad Bark",h:"#3a2a1a"},{l:"Shade",p:"Agrax Earthshade",h:"#3a2a10"},{l:"Drybrush",p:"Gorthor Brown",h:"#6a5038"},{l:"Light",p:"Baneblade Brown",h:"#a08060"}]},
+{n:"Grey Stone",i:"🪨",s:[{l:"Base",p:"Mech. Std Grey",h:"#525455"},{l:"Shade",p:"Nuln Oil",h:"#1a1a1a"},{l:"Drybrush",p:"Dawnstone",h:"#7a7d80"},{l:"Light",p:"Administratum Grey",h:"#a0a3a6"}]},
+{n:"Parchment",i:"📜",s:[{l:"Base",p:"Rakarth Flesh",h:"#c0a890"},{l:"Shade",p:"Agrax Earthshade",h:"#3a2a10"},{l:"Layer",p:"Pallid Wych Flesh",h:"#f0e0d0"},{l:"Text",p:"Abaddon Black",h:"#1a1a1a"}]},
+{n:"Red Gem",i:"💎",s:[{l:"Base",p:"Abaddon Black",h:"#1a1a1a"},{l:"Lower",p:"Khorne Red",h:"#6a0001"},{l:"Quarter",p:"Mephiston Red",h:"#9a1115"},{l:"Dot",p:"Evil Sunz Scarlet",h:"#c01411"},{l:"Spot",p:"White Scar",h:"#ffffff"}]},
+{n:"Brown Leather",i:"👜",s:[{l:"Base",p:"XV-88",h:"#8a6530"},{l:"Shade",p:"Agrax Earthshade",h:"#3a2a10"},{l:"Layer",p:"Balor Brown",h:"#a88540"},{l:"Highlight",p:"Ushabti Bone",h:"#d4c490"}]},
+];
+
+const BA=[
+{n:"Desert / Arid",i:"🏜️",s:["Agrellan Earth texture","Agrax Earthshade wash","Drybrush Ushabti Bone → Screaming Skull","Small rocks, desert tufts"]},
+{n:"Grassland",i:"🌿",s:["Stirland Mud texture","Agrax Earthshade wash","Drybrush Steel Legion Drab","Green static grass + tufts"]},
+{n:"Urban Ruins",i:"🏚️",s:["Astrogranite Debris texture","Nuln Oil wash","Drybrush Dawnstone → Admin. Grey","Cork rubble details"]},
+{n:"Snow / Ice",i:"❄️",s:["Astrogranite base","Mech. Grey → Nuln Oil → Dawnstone","Valhallan Blizzard (thick)"]},
+{n:"Volcanic",i:"🌋",s:["Stirland Battlemire texture","Abaddon Black base","Yriel Yellow → Troll Slayer cracks","Eshin Grey → Dawnstone DB"]},
+{n:"Swamp",i:"🐊",s:["Stirland Battlemire","Athonian Camoshade wash","Baneblade Brown DB","Nurgle's Rot pools"]},
+{n:"Martian",i:"🔴",s:["Martian Ironearth texture","Agrax wash","Kindleflame DB","Red/orange tufts"]},
+{n:"Chaos Wasteland",i:"💀",s:["Agrellan Earth (cracked)","Dark earth tones","Skulls, icons","Blood for Blood God pools"]},
+];
+
+// Faction data — abbreviated key names for compactness
+const F={"sm":[
+{n:"Ultramarines",g:"Warhammer 40,000",ic:"⚔️",bg:"#0d407f",cs:["#0d407f","#d4a940","#52b244"],rf:"GW → Ultramarines",el:[{t:"Armour",r:"Macragge Blue → Nuln Oil → Caledor Sky → Teclis Blue → Baharroth Blue edge"},{t:"Gold Trim",r:"Retributor Armour → Reikland → Auric → Liberator Gold"},{t:"Eyes",r:"Moot Green with White Scar dot"},{t:"Bolter",r:"Abaddon Black → Eshin Grey edge"},{t:"Base",r:"Astrogranite Debris · grey rubble"}]},
+{n:"Blood Angels",g:"Warhammer 40,000",ic:"🩸",bg:"#9a1115",cs:["#9a1115","#d4a940","#1a1a1a"],rf:"GW → Blood Angels",el:[{t:"Armour",r:"Mephiston Red → Nuln Oil → Evil Sunz Scarlet → Wild Rider Red → Fire Dragon edge"},{t:"Gold Trim",r:"Retributor Armour → Reikland → Auric"},{t:"Eyes",r:"Caledor Sky → Teclis Blue → Baharroth Blue"},{t:"Death Company",r:"Full Abaddon Black · red saltire"},{t:"Base",r:"Martian Ironcrust or rocky terrain"}]},
+{n:"Dark Angels",g:"Warhammer 40,000",ic:"🌑",bg:"#00401a",cs:["#00401a","#e8d8b4","#1a1a1a"],rf:"GW → Dark Angels",el:[{t:"Greenwing",r:"Caliban Green → Nuln Oil → Warpstone Glow → Moot Green edge"},{t:"Deathwing",r:"Zandri Dust → Agrax → Ushabti Bone → Screaming Skull"},{t:"Ravenwing",r:"Abaddon Black → Eshin Grey → Dawnstone → Fenrisian Grey edge"},{t:"Robes",r:"Rakarth Flesh → Agrax → Pallid Wych Flesh"},{t:"Eyes",r:"Khorne Red → Mephiston → Evil Sunz → Fire Dragon dot"}]},
+{n:"Space Wolves",g:"Warhammer 40,000",ic:"🐺",bg:"#3d5a6e",cs:["#3d5a6e","#ffd900","#7a4a28"],rf:"GW → Space Wolves",el:[{t:"Armour",r:"The Fang → Nuln Oil → Russ Grey → Fenrisian Grey → Etherium Blue edge"},{t:"Yellow",r:"Averland Sunset → Casandora Yellow → Yriel Yellow"},{t:"Pelts",r:"Mournfang Brown → Agrax → Skrag Brown → DB Ushabti Bone"},{t:"Base",r:"Snow and rocks (Astrogranite + Valhallan Blizzard)"}]},
+{n:"Imperial Fists",g:"Warhammer 40,000",ic:"✊",bg:"#fbb81c",cs:["#fbb81c","#1a1a1a","#9a1115"],rf:"GW → Imperial Fists",el:[{t:"Armour",r:"Prime Wraithbone → Averland Sunset → Casandora Yellow → Yriel Yellow → Flash Gitz → Dorn Yellow edge"},{t:"Aquila",r:"Abaddon Black or Retributor Armour"},{t:"Eyes",r:"Warpstone Glow → Moot Green → White dot"},{t:"Base",r:"Urban ruins · grey rubble"}]},
+{n:"Black Templars",g:"Warhammer 40,000",ic:"✝️",bg:"#1a1a1a",cs:["#1a1a1a","#ffffff","#9a1115"],rf:"GW → Black Templars",el:[{t:"Armour",r:"Abaddon Black → Eshin Grey → Dawnstone → Fenrisian Grey edge"},{t:"Tabard",r:"Rakarth Flesh → Agrax → Pallid Wych Flesh"},{t:"Cross",r:"Corax White Maltese cross"},{t:"Red Details",r:"Khorne Red → Mephiston Red → Evil Sunz"},{t:"Chains",r:"Leadbelcher → Nuln Oil → Ironbreaker"}]},
+{n:"Salamanders",g:"Warhammer 40,000",ic:"🔥",bg:"#1e7331",cs:["#1e7331","#fbb81c","#1a1a1a"],rf:"GW → Salamanders",el:[{t:"Armour",r:"Waaagh! Flesh → Nuln Oil → Warpstone Glow → Moot Green edge"},{t:"Flames",r:"Averland Sunset → Yriel Yellow center · Troll Slayer outer"},{t:"Dark Skin",r:"Abaddon Black → Dark Reaper → Thunderhawk Blue"},{t:"Base",r:"Volcanic / lava (black rock · glowing cracks)"}]},
+{n:"Grey Knights",g:"Warhammer 40,000",ic:"🛡️",bg:"#a0a0a0",cs:["#a0a0a0","#0d407f","#d4a940"],rf:"GW → Grey Knights",el:[{t:"Armour",r:"Leadbelcher → Nuln Oil → Ironbreaker → Stormhost Silver edge"},{t:"Force Weapons",r:"Kantor Blue → Caledor Sky → Teclis Blue → Baharroth Blue → White Scar gradient"},{t:"Gold",r:"Retributor Armour → Reikland → Auric"},{t:"Base",r:"Grey marble or daemonic wasteland"}]},
+],"csm":[
+{n:"Black Legion",g:"Chaos",ic:"⭐",bg:"#1a1a1a",cs:["#1a1a1a","#d4a940","#52b244"],rf:"GW → Black Legion",el:[{t:"Armour",r:"Abaddon Black → Incubi Darkness or Eshin Grey edge"},{t:"Gold Trim",r:"Retributor Armour → Reikland → Auric"},{t:"Eyes",r:"Green or red glow"},{t:"Base",r:"Dark wasteland · skulls"}]},
+{n:"World Eaters",g:"Chaos",ic:"🩸",bg:"#6a0001",cs:["#9a1115","#ffffff","#d4a940"],rf:"GW → World Eaters",el:[{t:"Armour",r:"Khorne Red → Nuln Oil → Evil Sunz Scarlet → Wild Rider Red edge"},{t:"White Panels",r:"Celestra Grey → Ulthuan Grey → Nuln Oil recess → White Scar"},{t:"Brass",r:"Balthasar Gold → Agrax → Hashut Copper → Sycorax Bronze"},{t:"Blood",r:"Blood for the Blood God technical"}]},
+{n:"Death Guard",g:"Chaos",ic:"☣️",bg:"#6a7a48",cs:["#6a7a48","#4a3020","#b04080"],rf:"GW → Death Guard",el:[{t:"Armour",r:"Death Guard Green → Agrax → Elysian Green → Ogryn Camo"},{t:"Trim",r:"Balthasar Gold → Agrax → Hashut Copper → Nihilakh Oxide"},{t:"Tentacles",r:"Screamer Pink → Druchii Violet → Pink Horror"},{t:"Rust",r:"Typhus Corrosion → Ryza Rust"},{t:"Slime",r:"Nurgle's Rot technical"}]},
+{n:"Thousand Sons",g:"Chaos",ic:"🔮",bg:"#00758a",cs:["#00758a","#d4a940","#7c1c5a"],rf:"GW → Thousand Sons",el:[{t:"Armour",r:"Thousand Sons Blue → Nuln Oil → Ahriman Blue → Temple Guard Blue → Baharroth Blue edge"},{t:"Gold Trim",r:"Retributor Armour → Reikland → Auric → Liberator Gold"},{t:"Tabards",r:"Screamer Pink → Druchii Violet → Pink Horror"},{t:"Eyes",r:"Moot Green"}]},
+{n:"Night Lords",g:"Chaos",ic:"🌙",bg:"#0d1b2a",cs:["#0d1b2a","#d4a940","#ffffff"],rf:"GW → Night Lords",el:[{t:"Armour",r:"Night Lords Blue → Nuln Oil → Kantor Blue → Alaitoc Blue → Hoeth Blue edge"},{t:"Lightning",r:"Celestra Grey → White Scar jagged freehand"},{t:"Skull Helms",r:"Zandri Dust → Agrax → Ushabti Bone"}]},
+],"imp":[
+{n:"Cadian Shock Troops",g:"Astra Militarum",ic:"🎖️",bg:"#4a5a30",cs:["#4a5a30","#b5a36a","#1a1a1a"],rf:"GW → Cadian",el:[{t:"Fatigues",r:"Castellan Green → Agrax → Loren Forest → Straken Green"},{t:"Armour",r:"Zandri Dust → Agrax → Ushabti Bone"},{t:"Skin",r:"Bugman's Glow → Reikland → Cadian → Kislev"},{t:"Lasgun",r:"Leadbelcher → Nuln Oil · Zandri Dust casing"}]},
+{n:"Adeptus Mechanicus",g:"Imperium",ic:"⚙️",bg:"#6a0001",cs:["#6a0001","#a0a0a0","#b06030"],rf:"GW → Adeptus Mechanicus",el:[{t:"Red Robes",r:"Khorne Red → Nuln Oil → Mephiston Red → Evil Sunz edge"},{t:"Silver",r:"Leadbelcher → Nuln Oil → Ironbreaker → Stormhost"},{t:"Brass",r:"Balthasar Gold → Agrax → Hashut Copper → Sycorax"},{t:"Green Glow",r:"Warpstone Glow → Moot Green → White dot"},{t:"Base",r:"Martian Ironcrust → Kindleflame DB"}]},
+{n:"Adeptus Custodes",g:"Imperium",ic:"👑",bg:"#b5860c",cs:["#b5860c","#6a0001","#a0a0a0"],rf:"GW → Custodes",el:[{t:"Gold Armour",r:"Retributor Armour → Reikland → Auric → Liberator → Stormhost edge"},{t:"Red Cloth",r:"Khorne Red → Nuln Oil → Mephiston Red → Evil Sunz → Wild Rider"},{t:"Steel",r:"Leadbelcher → Nuln Oil → Ironbreaker → Stormhost"},{t:"Base",r:"Marble / palace (white marble effect)"}]},
+{n:"Sisters of Battle",g:"Adepta Sororitas",ic:"⛪",bg:"#1a1a1a",cs:["#1a1a1a","#9a1115","#d4a940"],rf:"GW → Adepta Sororitas",el:[{t:"Black Armour",r:"Abaddon Black → Eshin Grey → Dawnstone → Admin. Grey edge"},{t:"Red Cloth",r:"Khorne Red → Nuln Oil → Mephiston Red → Evil Sunz"},{t:"Gold",r:"Retributor Armour → Reikland → Auric"},{t:"White Hair",r:"Celestra Grey → Nuln Oil recess → Ulthuan Grey → White Scar"},{t:"Skin",r:"Bugman's Glow → Reikland → Cadian → Kislev"}]},
+],"xenos":[
+{n:"Craftworld Ulthwé",g:"Aeldari",ic:"🌌",bg:"#1a1a1a",cs:["#1a1a1a","#d4c490","#c01411"],rf:"GW → Ulthwé",el:[{t:"Armour",r:"Abaddon Black → Dark Reaper → Thunderhawk Blue → Fenrisian Grey edge"},{t:"Bone",r:"Zandri Dust → Agrax → Ushabti Bone → Screaming Skull"},{t:"Spirit Stones",r:"Red gem technique"}]},
+{n:"Orks",g:"Warhammer 40,000",ic:"💪",bg:"#1e7331",cs:["#1e7331","#d4c490","#9a1115"],rf:"GW → Orks",el:[{t:"Green Skin",r:"Waaagh! Flesh → Biel-Tan Green → Warpstone Glow → Skarsnik Green → Nurgling Green"},{t:"Teeth",r:"Zandri Dust → Agrax → Ushabti Bone → Screaming Skull"},{t:"Rusty Metal",r:"Leadbelcher → Nuln Oil → Typhus Corrosion → Ryza Rust"},{t:"Base",r:"Muddy wasteland · junk · scrap"}]},
+{n:"Tyranids — Leviathan",g:"Warhammer 40,000",ic:"🦷",bg:"#3d2451",cs:["#3d2451","#c0a890","#b04080"],rf:"GW → Tyranids",el:[{t:"Carapace",r:"Naggaroth Night → Nuln Oil → Xereus Purple → Genestealer Purple → Pallid Wych Flesh edge"},{t:"Skin",r:"Rakarth Flesh → Carroburg Crimson → Pallid Wych Flesh"},{t:"Claws",r:"Abaddon Black → Eshin Grey → Dawnstone"}]},
+{n:"Necrons — Sautekh",g:"Warhammer 40,000",ic:"⚡",bg:"#6a6a6a",cs:["#a0a0a0","#52b244","#d4a940"],rf:"GW → Necrons",el:[{t:"Body",r:"Leadbelcher → Nuln Oil → Ironbreaker → Stormhost Silver"},{t:"Gauss Glow",r:"Warpstone Glow → Moot Green → Tesseract Glow → White dot"},{t:"Gold",r:"Retributor Armour → Reikland → Auric"},{t:"Base",r:"Desert tomb (Agrellan Earth · Nihilakh Oxide)"}]},
+{n:"T'au Sept",g:"T'au Empire",ic:"🎯",bg:"#8a6530",cs:["#8a6530","#ffffff","#525455"],rf:"GW → T'au Empire",el:[{t:"Ochre Armour",r:"XV-88 → Agrax → Balor Brown → Ushabti Bone"},{t:"Markings",r:"Celestra Grey → White Scar"},{t:"Undersuit",r:"Mechanicus Grey → Nuln Oil → Dawnstone"},{t:"T'au Skin",r:"The Fang → Russ Grey → Fenrisian Grey"}]},
+{n:"Drukhari",g:"Aeldari",ic:"🗡️",bg:"#003838",cs:["#003838","#1a1a1a","#52b244"],rf:"GW → Drukhari",el:[{t:"Armour",r:"Abaddon Black → Incubi Darkness → Kabalite Green → Sybarite Green edge"},{t:"Blades",r:"Leadbelcher → Nuln Oil → Stormhost · Moot Green poison edge"},{t:"Skin",r:"Rakarth Flesh → Druchii Violet → Pallid Wych Flesh"}]},
+],"order":[
+{n:"Stormcast — Hammers of Sigmar",g:"Age of Sigmar",ic:"⚡",bg:"#b5860c",cs:["#b5860c","#02385e","#d0d0d0"],rf:"GW → Stormcast",el:[{t:"Gold Armour",r:"Retributor Armour → Reikland → Auric → Liberator → Stormhost edge"},{t:"Blue Cloth",r:"Kantor Blue → Nuln Oil → Macragge Blue → Caledor Sky"},{t:"Lightning",r:"Teclis Blue → Baharroth Blue → White Scar"}]},
+{n:"Lumineth — Ymetrica",g:"Age of Sigmar",ic:"✨",bg:"#d8dce0",cs:["#d8dce0","#d4a940","#366699"],rf:"GW → Lumineth",el:[{t:"White Armour",r:"Celestra Grey → Nuln Oil recess → Ulthuan Grey → White Scar"},{t:"Gold",r:"Retributor → Reikland → Auric → Liberator"}]},
+{n:"Sylvaneth",g:"Age of Sigmar",ic:"🌳",bg:"#3a2a1a",cs:["#3a2a1a","#1e7331","#52b244"],rf:"GW → Sylvaneth",el:[{t:"Bark",r:"Dryad Bark → Agrax → Gorthor Brown DB → Baneblade Brown DB"},{t:"Leaves",r:"Caliban Green → Warpstone Glow → Moot Green"},{t:"Spirit Glow",r:"Moot Green → Tesseract Glow → White Scar"}]},
+{n:"Idoneth Deepkin",g:"Age of Sigmar",ic:"🌊",bg:"#006066",cs:["#006066","#d8dce0","#b04080"],rf:"GW → Idoneth Deepkin",el:[{t:"Teal Armour",r:"Stegadon Scale Green → Nuln Oil → Sotek Green → Temple Guard Blue → Baharroth Blue edge"},{t:"Pale Skin",r:"Deepkin Flesh → Druchii Violet → Pallid Wych Flesh"},{t:"Coral",r:"Screamer Pink → Pink Horror → Emperor's Children"}]},
+],"chaos":[
+{n:"Slaves to Darkness",g:"Age of Sigmar",ic:"⚔️",bg:"#505050",cs:["#6a6a6a","#4b2d10","#1a1a1a"],rf:"GW → Slaves to Darkness",el:[{t:"Dark Steel",r:"Leadbelcher → Nuln Oil (heavy) → Ironbreaker → Stormhost edge"},{t:"Fur",r:"Rhinox Hide → Agrax → Mournfang Brown → Ushabti Bone DB"},{t:"Skin",r:"Bugman's Glow → Reikland → Cadian → Kislev"}]},
+{n:"Blades of Khorne",g:"Age of Sigmar",ic:"🩸",bg:"#6a0001",cs:["#b06030","#6a0001","#d4c490"],rf:"GW → Blades of Khorne",el:[{t:"Brass",r:"Balthasar Gold → Agrax → Hashut Copper → Sycorax Bronze"},{t:"Red",r:"Khorne Red → Mephiston Red → Evil Sunz"},{t:"Blood",r:"Blood for the Blood God"},{t:"Skulls",r:"Zandri Dust → Agrax → Ushabti Bone"}]},
+{n:"Maggotkin of Nurgle",g:"Age of Sigmar",ic:"☣️",bg:"#6a7a48",cs:["#6a7a48","#3a2a10","#b04080"],rf:"GW → Maggotkin",el:[{t:"Skin",r:"Death Guard Green → Agrax → Elysian Green → Ogryn Camo"},{t:"Guts",r:"Screamer Pink → Druchii Violet → Pink Horror"},{t:"Slime",r:"Nurgle's Rot · Typhus Corrosion · Nihilakh Oxide"}]},
+{n:"Disciples of Tzeentch",g:"Age of Sigmar",ic:"🔮",bg:"#00758a",cs:["#b04080","#4488cc","#ffd900"],rf:"GW → Tzeentch",el:[{t:"Pink Horrors",r:"Screamer Pink → Carroburg Crimson → Pink Horror → Emperor's Children"},{t:"Blue Horrors",r:"Kantor Blue → Nuln Oil → Caledor Sky → Teclis Blue"},{t:"Warpflames",r:"Kantor Blue → Teclis Blue → Baharroth Blue → White Scar"}]},
+{n:"Skaven",g:"Age of Sigmar",ic:"🐀",bg:"#7a4a28",cs:["#7a4a28","#1e7331","#6a6a6a"],rf:"GW → Skaven",el:[{t:"Fur",r:"Mournfang Brown → Agrax → Skrag Brown → DB Ushabti Bone"},{t:"Warpstone",r:"Warpstone Glow → Moot Green → White Scar"},{t:"Rusty Metal",r:"Leadbelcher → Nuln Oil → Typhus Corrosion → Ryza Rust"}]},
+],"death":[
+{n:"Soulblight Gravelords",g:"Age of Sigmar",ic:"🧛",bg:"#6a0001",cs:["#1a1a1a","#6a0001","#d4a940"],rf:"GW → Soulblight",el:[{t:"Armour",r:"Abaddon Black → Dark Reaper → Thunderhawk Blue"},{t:"Red Cape",r:"Khorne Red → Nuln Oil → Mephiston Red → Evil Sunz"},{t:"Vampire Skin",r:"Rakarth Flesh → Druchii Violet → Pallid Wych Flesh → White Scar"},{t:"Skeletons",r:"Zandri Dust → Agrax → Ushabti Bone → Screaming Skull"}]},
+{n:"Nighthaunt",g:"Age of Sigmar",ic:"👻",bg:"#2a4a50",cs:["#d8dce0","#2a4a50","#6a6a6a"],rf:"GW → Nighthaunt",el:[{t:"Ghost",r:"Prime Corax White → Hexwraith Flame or Nighthaunt Gloom Contrast"},{t:"Alternative",r:"Celestra Grey → Coelia Greenshade → Ulthuan Grey DB → White Scar DB"},{t:"Chains",r:"Leadbelcher → Nuln Oil → Stormhost Silver DB"}]},
+{n:"Ossiarch Bonereapers",g:"Age of Sigmar",ic:"💀",bg:"#d4c490",cs:["#d4c490","#3d2451","#a0a0a0"],rf:"GW → Ossiarch",el:[{t:"Bone",r:"Zandri Dust → Agrax → Ushabti Bone → Screaming Skull → Pallid Wych Flesh edge"},{t:"Purple",r:"Naggaroth Night → Xereus Purple → Genestealer Purple"},{t:"Spirit Glow",r:"Nihilakh Oxide or Hexwraith Flame"}]},
+],"destr":[
+{n:"Ironjawz",g:"Age of Sigmar",ic:"💪",bg:"#fbb81c",cs:["#1e7331","#fbb81c","#6a6a6a"],rf:"GW → Ironjawz",el:[{t:"Green Skin",r:"Waaagh! Flesh → Biel-Tan Green → Warpstone Glow → Skarsnik Green"},{t:"Yellow Armour",r:"Averland Sunset → Agrax → Yriel Yellow → Flash Gitz"},{t:"Metal",r:"Leadbelcher → Nuln Oil → Ironbreaker"},{t:"Teeth",r:"Zandri Dust → Agrax → Ushabti Bone"}]},
+{n:"Gloomspite Gitz",g:"Age of Sigmar",ic:"🍄",bg:"#1e7331",cs:["#1e7331","#1a1a1a","#9a1115"],rf:"GW → Gloomspite Gitz",el:[{t:"Grot Skin",r:"Warpstone Glow → Biel-Tan Green → Skarsnik Green → Nurgling Green"},{t:"Black Robes",r:"Abaddon Black → Eshin Grey → Dawnstone"},{t:"Squigs",r:"Mephiston Red → Nuln Oil → Evil Sunz → Wild Rider Red"},{t:"Mushrooms",r:"Various bright colours · red caps + White Scar dots"}]},
+{n:"Ogor Mawtribes",g:"Age of Sigmar",ic:"🥩",bg:"#c48a5c",cs:["#c48a5c","#6a6a6a","#d4c490"],rf:"GW → Ogor Mawtribes",el:[{t:"Skin",r:"Bugman's Glow → Reikland → Cadian → Kislev"},{t:"Gut Plate",r:"Leadbelcher → Nuln Oil → Ironbreaker"},{t:"Teeth",r:"Zandri Dust → Agrax → Ushabti Bone"},{t:"Base",r:"Snow / grassland (Valhallan Blizzard)"}]},
+{n:"Fyreslayers",g:"Age of Sigmar",ic:"🔥",bg:"#f08030",cs:["#c48a5c","#f08030","#d4a940"],rf:"GW → Fyreslayers",el:[{t:"Skin",r:"Bugman's Glow → Reikland → Cadian → Kislev"},{t:"Orange Hair",r:"Jokaero Orange → Troll Slayer Orange → Yriel Yellow gradient"},{t:"Ur-Gold Runes",r:"Retributor Armour → Reikland → Auric → Liberator"},{t:"Base",r:"Volcanic / magma"}]},
+]};
+
+const W=[
+{p:"Universal Dark",h:"#1a1a1a",ci:"Nuln Oil",va:"Black Wash 73.201",ap:"Dark Tone"},
+{p:"Brown / Warm",h:"#3a2a10",ci:"Agrax Earthshade",va:"Umber Wash 73.203",ap:"Strong Tone"},
+{p:"Flesh",h:"#c08040",ci:"Reikland Fleshshade",va:"Flesh Wash 73.204",ap:"Flesh Wash"},
+{p:"Blue",h:"#0a2040",ci:"Drakenhof Nightshade",va:"Blue Wash 73.207",ap:"Blue Tone"},
+{p:"Green",h:"#103020",ci:"Biel-Tan Green",va:"Green Wash 73.205",ap:"Green Tone"},
+{p:"Red",h:"#400010",ci:"Carroburg Crimson",va:"Red Wash 73.206",ap:"Red Tone"},
+{p:"Purple",h:"#2a1040",ci:"Druchii Violet",va:"Violet Wash 73.208",ap:"Purple Tone"},
+{p:"Sepia",h:"#6a4a10",ci:"Seraphim Sepia",va:"Sepia Wash",ap:"Soft Tone"},
+];
+const CO=[
+{c:"Red",h:"#9a1115",ci:"Blood Angels Red",ap:"Blood Red"},
+{c:"Blue",h:"#0d407f",ci:"Ultramarines Blue",ap:"Highlord Blue"},
+{c:"Green",h:"#1e7331",ci:"Warp Lightning",ap:"Orc Skin"},
+{c:"Yellow",h:"#ffd900",ci:"Iyanden Yellow",ap:"Speed Yellow"},
+{c:"Purple",h:"#4b2c74",ci:"Shyish Purple",ap:"Hive Dweller Purple"},
+{c:"Brown",h:"#7a4a28",ci:"Snakebite Leather",ap:"Live Wire"},
+{c:"Bone",h:"#d4c490",ci:"Skeleton Horde",ap:"Pallid Bone"},
+{c:"Black",h:"#1a1a1a",ci:"Black Templar",ap:"Grim Black"},
+{c:"Grey",h:"#525455",ci:"Basilicanum Grey",ap:"Hard Knox"},
+{c:"Turquoise",h:"#006066",ci:"Terradon Turquoise",ap:"In the Jungle"},
+{c:"Ghost",h:"#40c070",ci:"Hexwraith Flame",ap:"Spectral Glow"},
+];
+const RE=[
+{n:"Games Workshop",u:"https://www.games-workshop.com",d:"Official studio-painted models for every unit — 360° views.",i:"🛒"},
+{n:"Citadel Colour App",u:"https://apps.apple.com/app/citadel-colour/id1346028554",d:"Free step-by-step painting tutorials with photographs.",i:"📱"},
+{n:"Warhammer Community",u:"https://www.warhammer-community.com",d:"Official painting guides, army showcases, previews.",i:"🌐"},
+{n:"Warhammer TV",u:"https://www.youtube.com/WarhammerTV",d:"Official YouTube painting tutorials for every faction.",i:"📺"},
+{n:"Duncan Rhodes Academy",u:"https://www.youtube.com/DuncanRhodesPainting",d:"In-depth tutorials from the legendary Duncan Rhodes.",i:"🎓"},
+{n:"Squidmar Miniatures",u:"https://www.youtube.com/SquidmarMiniatures",d:"Creative showcases and advanced techniques.",i:"🦑"},
+{n:"Reddit",u:"https://www.reddit.com/r/minipainting",d:"r/minipainting · r/Warhammer40k · r/ageofsigmar.",i:"💬"},
+{n:"Lexicanum",u:"https://wh40k.lexicanum.com",d:"Lore-accurate colour descriptions with official art.",i:"📚"},
+];
+
+// ============================================================
+// RENDER
+// ============================================================
+let cv='grid';
+function rGrid(f='all'){const c=document.getElementById('gridV');const d=f==='all'?P:P.filter(x=>x.c===f);c.innerHTML=`<div class="swatch-grid">${d.map(p=>`<div class="swatch-card"><div class="swatch-block${p.c.startsWith('metal')?' met':''}" style="background:${p.h}"></div><div class="swatch-info"><div class="swatch-name">${p.d}</div><div class="swatch-brand">${(p.ci||'').replace(/\s*\([BL]\)\s*/,'')}</div><div class="swatch-hex">${p.h}</div></div></div>`).join('')}</div>`}
+function rTbl(f='all'){const c=document.getElementById('tableV');const d=f==='all'?P:P.filter(x=>x.c===f);c.innerHTML=`<div class="tbl-wrap"><table class="tbl"><thead><tr><th></th><th>Description</th><th>Citadel</th><th>Vallejo MC</th><th>Vallejo GC</th><th>Army Painter</th><th>P3</th><th>Reaper</th></tr></thead><tbody>${d.map(p=>`<tr><td><span class="sw-i" style="background:${p.h}"></span></td><td class="pd">${p.d}</td><td>${p.ci||'<span class="em">—</span>'}</td><td>${p.va||'<span class="em">—</span>'}</td><td>${p.vg||'<span class="em">—</span>'}</td><td>${p.ap||'<span class="em">—</span>'}</td><td>${p.p3||'<span class="em">—</span>'}</td><td>${p.re||'<span class="em">—</span>'}</td></tr>`).join('')}</tbody></table></div>`}
+function setV(v){cv=v;document.getElementById('vGrid').classList.toggle('on',v==='grid');document.getElementById('vTable').classList.toggle('on',v==='table');document.getElementById('gridV').style.display=v==='grid'?'':'none';document.getElementById('tableV').style.display=v==='table'?'':'none'}
+function rRec(f='all'){const c=document.getElementById('recC');const d=f==='all'?R:R.filter(x=>x.t===f);c.innerHTML=d.map(r=>`<div class="rcard"><div class="rcard-head"><div class="rcard-name">${r.n}</div><div class="rcard-type">${r.t}</div></div><div class="rcard-grad">${r.s.map(s=>`<div class="gs" style="background:${s.h}"><span class="gl">${s.l}</span></div>`).join('')}</div><div class="rcard-body">${r.s.map((s,i)=>`<div class="rstep"><div class="rstep-n">${i+1}</div><div class="rstep-sw" style="background:${s.h}"></div><div class="rstep-info"><div class="rstep-lbl">${s.l}</div><div class="rstep-paint">${s.p}</div></div></div>`).join('')}</div></div>`).join('')}
+function rStep(id,data){const c=document.getElementById(id);c.innerHTML=data.map(item=>`<div class="rcard"><div class="rcard-head"><div class="rcard-name">${item.i||''} ${item.n}</div></div>${item.s&&item.s[0]&&item.s[0].h?`<div class="rcard-grad">${item.s.map(s=>`<div class="gs" style="background:${s.h}"><span class="gl">${s.l}</span></div>`).join('')}</div><div class="rcard-body">${item.s.map((s,i)=>`<div class="rstep"><div class="rstep-n">${i+1}</div><div class="rstep-sw" style="background:${s.h}"></div><div class="rstep-info"><div class="rstep-lbl">${s.l}</div><div class="rstep-paint">${s.p}</div></div></div>`).join('')}</div>`:`<div class="rcard-body">${item.s.map((s,i)=>`<div class="rstep"><div class="rstep-n">${i+1}</div><div class="rstep-info"><div class="rstep-paint">${typeof s==='string'?s:s.p}</div></div></div>`).join('')}</div>`}</div>`).join('')}
+function rFac(id,facs){const c=document.getElementById(id);c.innerHTML=facs.map((f,i)=>`<div class="fcard" id="f${id}${i}"><div class="fcard-head" onclick="togF('f${id}${i}')"><div class="fcard-ico" style="background:${f.bg}">${f.ic}</div><div class="fcard-details"><div class="fcard-name">${f.n}</div><div class="fcard-game">${f.g}</div><div class="fcard-swatches">${f.cs.map(c=>`<span class="fs" style="background:${c}"></span>`).join('')}</div></div><span class="fcard-chev">▼</span></div><div class="fcard-body"><div class="fcard-ref">📷 ${f.rf}</div>${f.el.map(e=>`<div class="el-row"><div class="el-lbl">${e.t}</div><div class="el-val">${e.r}</div></div>`).join('')}</div></div>`).join('')}
+function rWash(){const c=document.getElementById('washC');c.innerHTML=`<h2 class="sec-heading">Shade / Wash Equivalents</h2><p class="sec-sub">The most important paints in your collection.</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th></th><th>Purpose</th><th>Citadel</th><th>Vallejo</th><th>Army Painter</th></tr></thead><tbody>${W.map(w=>`<tr><td><span class="wsw" style="background:${w.h}"></span></td><td class="pd">${w.p}</td><td>${w.ci}</td><td>${w.va}</td><td>${w.ap}</td></tr>`).join('')}</tbody></table></div><h2 class="sec-heading" style="margin-top:48px">Contrast / Speed Paint</h2><p class="sec-sub">One-coat paints over light primer.</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th></th><th>Colour</th><th>Citadel Contrast</th><th>AP Speed Paint</th></tr></thead><tbody>${CO.map(c=>`<tr><td><span class="sw-i" style="background:${c.h}"></span></td><td class="pd">${c.c}</td><td>${c.ci}</td><td>${c.ap}</td></tr>`).join('')}</tbody></table></div>`}
+function rRef(){const c=document.getElementById('refC');c.innerHTML=RE.map(r=>`<div class="res-card"><div class="res-ico">${r.i}</div><div class="res-title">${r.n}</div><div class="res-desc">${r.d}</div><a href="${r.u}" target="_blank" class="res-link">Visit →</a></div>`).join('')}
+
+// ============================================================
+// NAV
+// ============================================================
+function go(id){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));document.querySelectorAll('.sb-link').forEach(l=>l.classList.remove('active'));const s=document.getElementById('s-'+id);if(s)s.classList.add('on');const l=document.querySelector(`.sb-link[data-s="${id}"]`);if(l)l.classList.add('active');document.getElementById('sb').classList.remove('open');document.getElementById('sbOverlay').classList.remove('active');window.scrollTo({top:0,behavior:'smooth'})}
+function togSB(){document.getElementById('sb').classList.toggle('open');document.getElementById('sbOverlay').classList.toggle('active')}
+function togF(id){document.getElementById(id).classList.toggle('open')}
+function fEq(f,el){document.querySelectorAll('#eqF .chip').forEach(c=>c.classList.remove('on'));el.classList.add('on');rGrid(f);rTbl(f)}
+function fRec(f,el){document.querySelectorAll('#rF .chip').forEach(c=>c.classList.remove('on'));el.classList.add('on');rRec(f)}
+
+// ============================================================
+// SEARCH
+// ============================================================
+const si=document.getElementById('searchIn'),sd=document.getElementById('searchDrop');
+si.addEventListener('input',function(){const q=this.value.toLowerCase().trim();if(q.length<2){sd.classList.remove('open');return}let rs=[];P.forEach(p=>{if(`${p.d} ${p.ci} ${p.va} ${p.vg} ${p.ap}`.toLowerCase().includes(q))rs.push({t:'Paint',n:p.d,b:p.ci,h:p.h,s:'equiv'})});R.forEach(r=>{if(r.n.toLowerCase().includes(q))rs.push({t:'Recipe',n:r.n,b:r.t,h:r.s[0].h,s:'recipes'})});Object.entries(F).forEach(([k,fs])=>{fs.forEach(f=>{if(`${f.n} ${f.g} ${f.el.map(e=>e.t+' '+e.r).join(' ')}`.toLowerCase().includes(q))rs.push({t:'Faction',n:f.n,b:f.g,h:f.bg,s:k})})});rs=rs.slice(0,12);sd.innerHTML=rs.length?rs.map(r=>`<div class="sr-item" onclick="go('${r.s}');sd.classList.remove('open');si.value='';"><span class="sw" style="background:${r.h}"></span><div class="si"><div class="sn">${r.n}</div><div class="sb">${r.b}</div></div><span class="st">${r.t}</span></div>`).join(''):'<div class="sr-item" style="color:var(--text-muted)">No results found</div>';sd.classList.add('open')});
+document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))sd.classList.remove('open')});
+
+// PWA
+let dp;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;document.getElementById('instB').style.display='block'});
+function instApp(){if(dp){dp.prompt();dp.userChoice.then(()=>{document.getElementById('instB').style.display='none';dp=null})}}
+if('serviceWorker'in navigator)window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{})});
+
+// INIT
+document.addEventListener('DOMContentLoaded',function(){
+  rGrid('all');rTbl('all');rRec('all');
+  rStep('matC',MA);rStep('skinC',SK);rStep('baseC',BA);
+  Object.entries(F).forEach(([k,v])=>rFac('fc-'+k,v));
+  rWash();rRef();
+});
+</script>
+</body>
+</html>
