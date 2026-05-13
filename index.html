@@ -1135,7 +1135,7 @@ const paints = [
       { brand: "Army Painter", name: "Pure Red", hex: "#a82828" },
       { brand: "Scale75", name: "Bloody Red", hex: "#a52a2a" },
       { brand: "AK 3rd Gen", name: "Bright Red", hex: "#aa2424" },
-      { brand: "P3", name: "Khador Red Base", hex: "#a32422" }
+      { brand: "P3 (Steamforged)", name: "Khador Red", hex: "#a32422" }
     ]
   },
   { name: "Khorne Red", brand: "Citadel", family: "red", hex: "#741a1c", role: "Base",
@@ -1143,7 +1143,8 @@ const paints = [
       { brand: "Vallejo GC", name: "Gory Red", hex: "#761c1e" },
       { brand: "Army Painter", name: "Dragon Red", hex: "#7a1c20" },
       { brand: "Scale75", name: "Heavy Red", hex: "#761818" },
-      { brand: "AK 3rd Gen", name: "Crimson Red", hex: "#7c1d20" }
+      { brand: "AK 3rd Gen", name: "Crimson Red", hex: "#7c1d20" },
+      { brand: "P3 (Steamforged)", name: "Sanguine Base", hex: "#7a1d20" }
     ]
   },
   { name: "Evil Sunz Scarlet", brand: "Citadel", family: "red", hex: "#cf2e29", role: "Layer",
@@ -1151,14 +1152,16 @@ const paints = [
       { brand: "Vallejo GC", name: "Scarlet Red", hex: "#cc3030" },
       { brand: "Army Painter", name: "Lava Orange", hex: "#d23423" },
       { brand: "Scale75", name: "Scar Red", hex: "#ce2b27" },
-      { brand: "AK 3rd Gen", name: "Scarlet Red", hex: "#d12c28" }
+      { brand: "AK 3rd Gen", name: "Scarlet Red", hex: "#d12c28" },
+      { brand: "P3 (Steamforged)", name: "Khador Red Highlight", hex: "#cd2e2a" }
     ]
   },
   { name: "Wild Rider Red", brand: "Citadel", family: "red", hex: "#e84d29", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Hot Orange", hex: "#e85228" },
       { brand: "Army Painter", name: "Demon Red", hex: "#e54a24" },
-      { brand: "Scale75", name: "Persian Red", hex: "#e74e2a" }
+      { brand: "Scale75", name: "Persian Red", hex: "#e74e2a" },
+      { brand: "P3 (Steamforged)", name: "Skorne Red", hex: "#e64d28" }
     ]
   },
 
@@ -1168,14 +1171,16 @@ const paints = [
       { brand: "Vallejo GC", name: "Orange Fire", hex: "#e95c1e" },
       { brand: "Army Painter", name: "Hot Orange", hex: "#eb5e20" },
       { brand: "Scale75", name: "Bran Orange", hex: "#e95820" },
-      { brand: "AK 3rd Gen", name: "Orange Red", hex: "#ea5a1c" }
+      { brand: "AK 3rd Gen", name: "Orange Red", hex: "#ea5a1c" },
+      { brand: "P3 (Steamforged)", name: "Heartfire", hex: "#e85a1c" }
     ]
   },
   { name: "Fire Dragon Bright", brand: "Citadel", family: "orange", hex: "#f08025", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Sun Yellow", hex: "#ee8228" },
       { brand: "Army Painter", name: "Fire Orange", hex: "#f0822a" },
-      { brand: "Scale75", name: "Inktense Orange", hex: "#f18424" }
+      { brand: "Scale75", name: "Inktense Orange", hex: "#f18424" },
+      { brand: "P3 (Steamforged)", name: "Heartfire Highlight", hex: "#f08222" }
     ]
   },
 
@@ -1185,7 +1190,8 @@ const paints = [
       { brand: "Vallejo GC", name: "Gold Yellow", hex: "#d8941e" },
       { brand: "Army Painter", name: "Desert Yellow", hex: "#db9624" },
       { brand: "Scale75", name: "Saffron Yellow", hex: "#d99022" },
-      { brand: "AK 3rd Gen", name: "Saffron Yellow", hex: "#da931e" }
+      { brand: "AK 3rd Gen", name: "Saffron Yellow", hex: "#da931e" },
+      { brand: "P3 (Steamforged)", name: "Sulfuric Yellow", hex: "#d9931f" }
     ]
   },
   { name: "Yriel Yellow", brand: "Citadel", family: "yellow", hex: "#f5c01c", role: "Layer",
@@ -1193,14 +1199,16 @@ const paints = [
       { brand: "Vallejo GC", name: "Sun Yellow", hex: "#f4c220" },
       { brand: "Army Painter", name: "Daemonic Yellow", hex: "#f6c020" },
       { brand: "Scale75", name: "Citrine Alchemy", hex: "#f5c41e" },
-      { brand: "AK 3rd Gen", name: "Yellow", hex: "#f5be1a" }
+      { brand: "AK 3rd Gen", name: "Yellow", hex: "#f5be1a" },
+      { brand: "P3 (Steamforged)", name: "Cygnus Yellow", hex: "#f5c01e" }
     ]
   },
   { name: "Flash Gitz Yellow", brand: "Citadel", family: "yellow", hex: "#fde62c", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Moon Yellow", hex: "#fde830" },
       { brand: "Army Painter", name: "Lemon Yellow", hex: "#fde528" },
-      { brand: "Scale75", name: "Sulfur Yellow", hex: "#fde630" }
+      { brand: "Scale75", name: "Sulfur Yellow", hex: "#fde630" },
+      { brand: "P3 (Steamforged)", name: "Sulfuric Yellow Highlight", hex: "#fde630" }
     ]
   },
 
@@ -1210,35 +1218,40 @@ const paints = [
       { brand: "Vallejo GC", name: "Dark Green", hex: "#0a3e26", },
       { brand: "Army Painter", name: "Angel Green", hex: "#093a26" },
       { brand: "Scale75", name: "Highland Moss", hex: "#0a3c28" },
-      { brand: "AK 3rd Gen", name: "Forest Green", hex: "#083d28" }
+      { brand: "AK 3rd Gen", name: "Forest Green", hex: "#083d28" },
+      { brand: "P3 (Steamforged)", name: "Iosan Green", hex: "#0a3c28" }
     ]
   },
   { name: "Warpstone Glow", brand: "Citadel", family: "green", hex: "#1e6b3c", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Goblin Green", hex: "#1f6e3e" },
       { brand: "Army Painter", name: "Goblin Green", hex: "#1e6c3e" },
-      { brand: "Scale75", name: "Wolf Grey Green", hex: "#216c3e" }
+      { brand: "Scale75", name: "Wolf Grey Green", hex: "#216c3e" },
+      { brand: "P3 (Steamforged)", name: "Wurm Green", hex: "#206d3e" }
     ]
   },
   { name: "Moot Green", brand: "Citadel", family: "green", hex: "#2fb14d", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Bright Green", hex: "#30b250" },
       { brand: "Army Painter", name: "Greenskin", hex: "#32b04d" },
-      { brand: "Scale75", name: "Pure Green", hex: "#2eaf4c" }
+      { brand: "Scale75", name: "Pure Green", hex: "#2eaf4c" },
+      { brand: "P3 (Steamforged)", name: "Gnarls Green", hex: "#30b150" }
     ]
   },
   { name: "Castellan Green", brand: "Citadel", family: "green", hex: "#3a4a26", role: "Base",
     equiv: [
       { brand: "Vallejo GC", name: "Dark Green", hex: "#3c4c28" },
       { brand: "Army Painter", name: "Army Green", hex: "#3a4b27" },
-      { brand: "Scale75", name: "Pale Greyish Green", hex: "#3b4a26" }
+      { brand: "Scale75", name: "Pale Greyish Green", hex: "#3b4a26" },
+      { brand: "P3 (Steamforged)", name: "Thornwood Green", hex: "#3b4b28" }
     ]
   },
   { name: "Death Guard Green", brand: "Citadel", family: "green", hex: "#9aa874", role: "Base",
     equiv: [
       { brand: "Vallejo GC", name: "Yellow Olive", hex: "#9ba976" },
       { brand: "Army Painter", name: "Necrotic Flesh", hex: "#9ca876" },
-      { brand: "Scale75", name: "Necro Gold", hex: "#9ba975" }
+      { brand: "Scale75", name: "Necro Gold", hex: "#9ba975" },
+      { brand: "P3 (Steamforged)", name: "Ordic Olive", hex: "#9ba975" }
     ]
   },
 
@@ -1249,35 +1262,39 @@ const paints = [
       { brand: "Army Painter", name: "Crystal Blue", hex: "#1e3d7b" },
       { brand: "Scale75", name: "Ultramarine Blue", hex: "#1f3e7c" },
       { brand: "AK 3rd Gen", name: "Ultramarine Blue", hex: "#1d3c79" },
-      { brand: "P3", name: "Cygnus Yellow Blue", hex: "#1e3c78" }
+      { brand: "P3 (Steamforged)", name: "Cygnar Blue", hex: "#1e3c78" }
     ]
   },
   { name: "Kantor Blue", brand: "Citadel", family: "blue", hex: "#152848", role: "Base",
     equiv: [
       { brand: "Vallejo GC", name: "Imperial Blue", hex: "#16294a" },
       { brand: "Army Painter", name: "Deep Blue", hex: "#152a4a" },
-      { brand: "Scale75", name: "Mediterranean Blue", hex: "#162a4a" }
+      { brand: "Scale75", name: "Mediterranean Blue", hex: "#162a4a" },
+      { brand: "P3 (Steamforged)", name: "Exile Blue", hex: "#16294a" }
     ]
   },
   { name: "Caledor Sky", brand: "Citadel", family: "blue", hex: "#1c5fa6", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Magic Blue", hex: "#1d60a8" },
       { brand: "Army Painter", name: "Electric Blue", hex: "#1c5ea4" },
-      { brand: "Scale75", name: "Mediterranean Blue", hex: "#1e60a6" }
+      { brand: "Scale75", name: "Mediterranean Blue", hex: "#1e60a6" },
+      { brand: "P3 (Steamforged)", name: "Meredius Blue", hex: "#1d60a8" }
     ]
   },
   { name: "Teclis Blue", brand: "Citadel", family: "blue", hex: "#3098c6", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Electric Blue", hex: "#329ac8" },
       { brand: "Army Painter", name: "Ultramarine Blue", hex: "#319bc6" },
-      { brand: "Scale75", name: "Caribbean Blue", hex: "#319ac8" }
+      { brand: "Scale75", name: "Caribbean Blue", hex: "#319ac8" },
+      { brand: "P3 (Steamforged)", name: "Arcane Blue", hex: "#329ac8" }
     ]
   },
   { name: "Lothern Blue", brand: "Citadel", family: "blue", hex: "#76c8e4", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Sky Blue", hex: "#78cae6" },
       { brand: "Army Painter", name: "Frost Blue", hex: "#77c9e5" },
-      { brand: "Scale75", name: "Pale Blue", hex: "#79cae5" }
+      { brand: "Scale75", name: "Pale Blue", hex: "#79cae5" },
+      { brand: "P3 (Steamforged)", name: "Frostbite", hex: "#78cae6" }
     ]
   },
 
@@ -1286,21 +1303,24 @@ const paints = [
     equiv: [
       { brand: "Vallejo GC", name: "Hexed Lichen", hex: "#35224c" },
       { brand: "Army Painter", name: "Alien Purple", hex: "#34224a" },
-      { brand: "Scale75", name: "Black Purple", hex: "#35214b" }
+      { brand: "Scale75", name: "Black Purple", hex: "#35214b" },
+      { brand: "P3 (Steamforged)", name: "Beaten Purple", hex: "#35224c" }
     ]
   },
   { name: "Xereus Purple", brand: "Citadel", family: "purple", hex: "#56326e", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Royal Purple", hex: "#583470" },
       { brand: "Army Painter", name: "Purple Robe", hex: "#583370" },
-      { brand: "Scale75", name: "Speed Metal Purple", hex: "#56336e" }
+      { brand: "Scale75", name: "Speed Metal Purple", hex: "#56336e" },
+      { brand: "P3 (Steamforged)", name: "Beaten Purple Highlight", hex: "#583470" }
     ]
   },
   { name: "Genestealer Purple", brand: "Citadel", family: "purple", hex: "#8e3c84", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Warlord Purple", hex: "#903e86" },
       { brand: "Army Painter", name: "Wizard's Orb", hex: "#8f3d85" },
-      { brand: "Scale75", name: "Indigo Yellow Sound", hex: "#8e3d84" }
+      { brand: "Scale75", name: "Indigo Yellow Sound", hex: "#8e3d84" },
+      { brand: "P3 (Steamforged)", name: "Murderous Magenta", hex: "#903e86" }
     ]
   },
 
@@ -1309,7 +1329,8 @@ const paints = [
     equiv: [
       { brand: "Vallejo GC", name: "Chocolate Brown", hex: "#3c241c" },
       { brand: "Army Painter", name: "Oak Brown", hex: "#3b231b" },
-      { brand: "Scale75", name: "Heavy Charred Brown", hex: "#3b231b" }
+      { brand: "Scale75", name: "Heavy Charred Brown", hex: "#3b231b" },
+      { brand: "P3 (Steamforged)", name: "Bloodstone", hex: "#3c241c" }
     ]
   },
   { name: "Mournfang Brown", brand: "Citadel", family: "brown", hex: "#664326", role: "Base",
@@ -1317,21 +1338,24 @@ const paints = [
       { brand: "Vallejo GC", name: "Beasty Brown", hex: "#684528" },
       { brand: "Army Painter", name: "Leather Brown", hex: "#674428" },
       { brand: "Scale75", name: "Birch Brown", hex: "#664328" },
-      { brand: "AK 3rd Gen", name: "Leather Brown", hex: "#674527" }
+      { brand: "AK 3rd Gen", name: "Leather Brown", hex: "#674527" },
+      { brand: "P3 (Steamforged)", name: "Battlefield Brown", hex: "#684528" }
     ]
   },
   { name: "Skrag Brown", brand: "Citadel", family: "brown", hex: "#a25c2a", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Heavy Brown", hex: "#a45e2c" },
       { brand: "Army Painter", name: "Tanned Flesh", hex: "#a45d2b" },
-      { brand: "Scale75", name: "Snake Leather", hex: "#a35d2b" }
+      { brand: "Scale75", name: "Snake Leather", hex: "#a35d2b" },
+      { brand: "P3 (Steamforged)", name: "Bootstrap Leather", hex: "#a45e2c" }
     ]
   },
   { name: "Steel Legion Drab", brand: "Citadel", family: "brown", hex: "#8a7553", role: "Base",
     equiv: [
       { brand: "Vallejo GC", name: "Khaki", hex: "#8c7756" },
       { brand: "Army Painter", name: "Skeleton Bone", hex: "#8b7654" },
-      { brand: "Scale75", name: "Brown Leather", hex: "#8a7654" }
+      { brand: "Scale75", name: "Brown Leather", hex: "#8a7654" },
+      { brand: "P3 (Steamforged)", name: "Rucksack Tan", hex: "#8c7756" }
     ]
   },
 
@@ -1340,21 +1364,24 @@ const paints = [
     equiv: [
       { brand: "Vallejo GC", name: "Cavalry Brown", hex: "#86493c" },
       { brand: "Army Painter", name: "Tanned Flesh", hex: "#85483b" },
-      { brand: "Scale75", name: "Calet Earth", hex: "#85483a" }
+      { brand: "Scale75", name: "Calet Earth", hex: "#85483a" },
+      { brand: "P3 (Steamforged)", name: "Bloodtracker Brown", hex: "#86493c" }
     ]
   },
   { name: "Cadian Fleshtone", brand: "Citadel", family: "flesh", hex: "#b87a5d", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Dwarf Skin", hex: "#ba7c5f" },
       { brand: "Army Painter", name: "Barbarian Flesh", hex: "#b97b5e" },
-      { brand: "Scale75", name: "Light Cream Skin", hex: "#b87b5e" }
+      { brand: "Scale75", name: "Light Cream Skin", hex: "#b87b5e" },
+      { brand: "P3 (Steamforged)", name: "Midlund Flesh", hex: "#ba7c5f" }
     ]
   },
   { name: "Kislev Flesh", brand: "Citadel", family: "flesh", hex: "#dba07c", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Sunny Skintone", hex: "#dca27e" },
       { brand: "Army Painter", name: "Tanned Flesh", hex: "#dba17d" },
-      { brand: "Scale75", name: "Basic Skin Tone", hex: "#dba17e" }
+      { brand: "Scale75", name: "Basic Skin Tone", hex: "#dba17e" },
+      { brand: "P3 (Steamforged)", name: "Ryn Flesh", hex: "#dca27e" }
     ]
   },
 
@@ -1364,35 +1391,40 @@ const paints = [
       { brand: "Vallejo GC", name: "Black", hex: "#161616" },
       { brand: "Army Painter", name: "Matt Black", hex: "#181818" },
       { brand: "Scale75", name: "Black", hex: "#151515" },
-      { brand: "AK 3rd Gen", name: "Black", hex: "#171717" }
+      { brand: "AK 3rd Gen", name: "Black", hex: "#171717" },
+      { brand: "P3 (Steamforged)", name: "Thamar Black", hex: "#171717" }
     ]
   },
   { name: "Eshin Grey", brand: "Citadel", family: "grey", hex: "#3a3c3c", role: "Base",
     equiv: [
       { brand: "Vallejo GC", name: "Cold Grey", hex: "#3c3e3e" },
       { brand: "Army Painter", name: "Uniform Grey", hex: "#3b3d3d" },
-      { brand: "Scale75", name: "Black Grey", hex: "#3a3b3b" }
+      { brand: "Scale75", name: "Black Grey", hex: "#3a3b3b" },
+      { brand: "P3 (Steamforged)", name: "Bastion Grey", hex: "#3c3e3e" }
     ]
   },
   { name: "Mechanicus Standard Grey", brand: "Citadel", family: "grey", hex: "#52555a", role: "Base",
     equiv: [
       { brand: "Vallejo GC", name: "Neutral Grey", hex: "#54575c" },
       { brand: "Army Painter", name: "Castle Grey", hex: "#53565b" },
-      { brand: "Scale75", name: "Heavy Warm Grey", hex: "#52555b" }
+      { brand: "Scale75", name: "Heavy Warm Grey", hex: "#52555b" },
+      { brand: "P3 (Steamforged)", name: "Ironhull Grey", hex: "#54575c" }
     ]
   },
   { name: "Dawnstone", brand: "Citadel", family: "grey", hex: "#80807e", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "London Grey", hex: "#828280" },
       { brand: "Army Painter", name: "Wolf Grey", hex: "#818180" },
-      { brand: "Scale75", name: "Wolf Grey", hex: "#80807f" }
+      { brand: "Scale75", name: "Wolf Grey", hex: "#80807f" },
+      { brand: "P3 (Steamforged)", name: "Greatcoat Grey", hex: "#828280" }
     ]
   },
   { name: "Administratum Grey", brand: "Citadel", family: "grey", hex: "#b8b6ad", role: "Layer",
     equiv: [
       { brand: "Vallejo GC", name: "Sky Grey", hex: "#bab8af" },
       { brand: "Army Painter", name: "Ash Grey", hex: "#b9b7ae" },
-      { brand: "Scale75", name: "Light Grey", hex: "#b8b6ae" }
+      { brand: "Scale75", name: "Light Grey", hex: "#b8b6ae" },
+      { brand: "P3 (Steamforged)", name: "Trollblood Highlight", hex: "#bab8af" }
     ]
   },
   { name: "White Scar", brand: "Citadel", family: "grey", hex: "#f0ece3", role: "Layer",
@@ -1400,7 +1432,8 @@ const paints = [
       { brand: "Vallejo GC", name: "White", hex: "#f2eee5" },
       { brand: "Army Painter", name: "Matt White", hex: "#f0ecE3" },
       { brand: "Scale75", name: "White", hex: "#f1ede4" },
-      { brand: "AK 3rd Gen", name: "White", hex: "#f0ecE3" }
+      { brand: "AK 3rd Gen", name: "White", hex: "#f0ecE3" },
+      { brand: "P3 (Steamforged)", name: "Morrow White", hex: "#f2eee5" }
     ]
   },
 
@@ -1410,28 +1443,32 @@ const paints = [
       { brand: "Vallejo Metal Colour", name: "Gunmetal", hex: "#4c4c4f" },
       { brand: "Army Painter", name: "Gun Metal", hex: "#4b4b4e" },
       { brand: "Scale75", name: "Heavy Metal", hex: "#4a4a4d" },
-      { brand: "AK 3rd Gen", name: "Gunmetal Grey", hex: "#4b4b4e" }
+      { brand: "AK 3rd Gen", name: "Gunmetal Grey", hex: "#4b4b4e" },
+      { brand: "P3 (Steamforged)", name: "Cold Steel", hex: "#4c4c4f" }
     ]
   },
   { name: "Ironbreaker", brand: "Citadel", family: "metal", hex: "#7d7e80", role: "Layer Metallic",
     equiv: [
       { brand: "Vallejo Metal Colour", name: "Silver", hex: "#7f8082" },
       { brand: "Army Painter", name: "Plate Mail Metal", hex: "#7e7f81" },
-      { brand: "Scale75", name: "Speed Metal", hex: "#7d7e80" }
+      { brand: "Scale75", name: "Speed Metal", hex: "#7d7e80" },
+      { brand: "P3 (Steamforged)", name: "Quick Silver", hex: "#7f8082" }
     ]
   },
   { name: "Retributor Armour", brand: "Citadel", family: "metal", hex: "#a07a30", role: "Base Metallic",
     equiv: [
       { brand: "Vallejo Metal Colour", name: "Polished Gold", hex: "#a27c32" },
       { brand: "Army Painter", name: "Greedy Gold", hex: "#a17b31" },
-      { brand: "Scale75", name: "Citrine Alchemy Gold", hex: "#a07a30" }
+      { brand: "Scale75", name: "Citrine Alchemy Gold", hex: "#a07a30" },
+      { brand: "P3 (Steamforged)", name: "Solid Gold", hex: "#a27c32" }
     ]
   },
   { name: "Balthasar Gold", brand: "Citadel", family: "metal", hex: "#705028", role: "Base Metallic",
     equiv: [
       { brand: "Vallejo Metal Colour", name: "Bright Bronze", hex: "#72522a" },
       { brand: "Army Painter", name: "Weapon Bronze", hex: "#71512a" },
-      { brand: "Scale75", name: "Necro Gold", hex: "#705129" }
+      { brand: "Scale75", name: "Necro Gold", hex: "#705129" },
+      { brand: "P3 (Steamforged)", name: "Rhulic Gold", hex: "#72522a" }
     ]
   },
 
