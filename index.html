@@ -488,6 +488,7 @@ nav.tabs button .num {
 .system-badge.system-heresy { color: #c9a559; border-color: #4a3a1c; }
 .system-badge.system-aos    { color: #c0a8d4; border-color: #3a2a4a; }
 .system-badge.system-old    { color: #d4b29a; border-color: #3a2a1c; }
+.system-badge.system-me     { color: #a8c4a0; border-color: #2a3a26; }
 .faction-body h3 {
   font-family: 'Fraunces', serif;
   font-weight: 400;
@@ -978,8 +979,8 @@ footer .colophon {
   <p class="subtitle">A reference catalogue of miniature paints, cross-manufacturer equivalencies, faction recipes, and the techniques that separate a tabletop from a trophy.</p>
   <div class="meta-row">
     <span><strong>6</strong> manufacturers indexed</span>
-    <span><strong>4</strong> game systems</span>
-    <span><strong>82</strong> faction recipes</span>
+    <span><strong>5</strong> game systems</span>
+    <span><strong>100</strong> faction recipes</span>
     <span><strong>16</strong> skin tones</span>
     <span><strong>3</strong> finish tiers</span>
     <span><strong>50+</strong> paints catalogued</span>
@@ -1042,6 +1043,7 @@ footer .colophon {
       <button class="chip" data-system="heresy">The Horus Heresy</button>
       <button class="chip" data-system="aos">Age of Sigmar</button>
       <button class="chip" data-system="old">The Old World</button>
+      <button class="chip" data-system="me">Middle-earth</button>
     </div>
   </div>
 
@@ -2464,6 +2466,248 @@ const factions = [
       { method: "Beard", paint: "Abaddon Black with Eshin Grey drybrush — or Mournfang dark beards", hex: "#1a1a1a" },
       { method: "Heavy Gold", paint: "Balthasar Gold, Reikland shade, Sycorax Bronze edges", hex: "#705028" }
     ]
+  },
+  // ═══════════════ MIDDLE-EARTH ═══════════════
+  {
+    system: "me", name: "Gondor — Minas Tirith", accent: "Men of the West · Citadel Guard", banner: "#a8a9ab",
+    desc: "Silver-and-black tree-of-Gondor heraldry. Polished plate over deep midnight cloth. Faramir's city.",
+    steps: [
+      { method: "Prime", paint: "Chaos Black spray", hex: "#1a1a1a" },
+      { method: "Armour Mail", paint: "Leadbelcher, Nuln Oil heavy wash", hex: "#4a4a4d" },
+      { method: "Armour Highlight", paint: "Drybrush Ironbreaker, edge with Stormhost Silver", hex: "#7d7e80" },
+      { method: "Cloth/Tabard", paint: "Abaddon Black, drybrushed Eshin Grey, fine Mechanicus Standard edges", hex: "#1a1a1a" },
+      { method: "Tree of Gondor", paint: "Ulthuan Grey base, White Scar highlights — freehand on left shoulder/banner", hex: "#f0ece3" },
+      { method: "Leather & Wood", paint: "Mournfang Brown, Agrax wash, Skrag Brown drybrush", hex: "#664326" },
+      { method: "Flesh", paint: "Bugman's Glow → Reikland shade → Cadian Fleshtone → Kislev highlights", hex: "#b87a5d" }
+    ]
+  },
+  {
+    system: "me", name: "Rohan — Riders of the Mark", accent: "Horse-lords of the Riddermark", banner: "#1e6b3c",
+    desc: "Pale Northmen in green and gold. Leather, mail, and the white horse of Rohan.",
+    steps: [
+      { method: "Prime", paint: "Wraithbone spray", hex: "#d9cfb8" },
+      { method: "Tunic", paint: "Castellan Green, Agrax Earthshade, Death Guard Green highlights", hex: "#3a4a26" },
+      { method: "Leather", paint: "Mournfang Brown basecoat, Agrax wash, Skrag drybrush", hex: "#664326" },
+      { method: "Mail Shirt", paint: "Leadbelcher, Nuln Oil, drybrush Ironbreaker", hex: "#4a4a4d" },
+      { method: "Gold Trim", paint: "Balthasar Gold, Reikland shade, Sycorax Bronze highlight", hex: "#705028" },
+      { method: "Hair", paint: "Averland Sunset, Reikland shade, Yriel Yellow on raised strands (blonde)", hex: "#d99220" },
+      { method: "Flesh", paint: "Bugman's → Reikland → Cadian → Kislev for fair Northern complexion", hex: "#b87a5d" }
+    ]
+  },
+  {
+    system: "me", name: "Rivendell — Last Homely House", accent: "Noldorin Elves of Imladris", banner: "#c9a559",
+    desc: "Brilliant gold mail with crimson tabards. Elrond's household. Last Alliance survivors.",
+    steps: [
+      { method: "Prime", paint: "Chaos Black spray", hex: "#1a1a1a" },
+      { method: "Gold Mail", paint: "Retributor Armour basecoat (full body coverage)", hex: "#a07a30" },
+      { method: "Gold Shade", paint: "Reikland Fleshshade in recesses, Agrax in deepest", hex: "#7a3820" },
+      { method: "Gold Highlight", paint: "Auric Armour Gold, then Liberator Gold on edges", hex: "#c9a559" },
+      { method: "Crimson Cloth", paint: "Khorne Red, Carroburg shade, Mephiston layer, Wild Rider highlights", hex: "#a8232a" },
+      { method: "Hair", paint: "Mournfang Brown or Ushabti Bone (varies); pale elven hair preferred", hex: "#664326" },
+      { method: "Flesh", paint: "Kislev Flesh smoothed, Reikland in recesses, Flayed One highlights — luminous and pale", hex: "#dba07c" }
+    ]
+  },
+  {
+    system: "me", name: "Lothlórien — Galadhrim", accent: "Silvan Elves of the Golden Wood", banner: "#3a8aa0",
+    desc: "Soft greys and forest greens with silver mail. Galadriel's wardens. Whispering bowmen.",
+    steps: [
+      { method: "Prime", paint: "Wraithbone spray", hex: "#d9cfb8" },
+      { method: "Cloak/Tunic", paint: "Stegadon Scale Green base, Coelia Greenshade wash, Sotek Green highlight", hex: "#1c4a3a" },
+      { method: "Mail", paint: "Leadbelcher, Nuln Oil, Stormhost Silver edge highlights (mirror-bright)", hex: "#4a4a4d" },
+      { method: "Helm & Pauldrons", paint: "Ulthuan Grey, Apothecary White wash, White Scar highlights", hex: "#b8b6ad" },
+      { method: "Leaf Brooch", paint: "Retributor Armour, Reikland shade — leaf-of-Lórien clasp", hex: "#a07a30" },
+      { method: "Hair", paint: "Ushabti Bone, Seraphim Sepia, Screaming Skull (golden-pale)", hex: "#d9cfb8" },
+      { method: "Flesh", paint: "Kislev Flesh smoothed, restrained shading", hex: "#dba07c" }
+    ]
+  },
+  {
+    system: "me", name: "Mirkwood — Wood Elves of Thranduil", accent: "Elves of the Greenwood", banner: "#003a26",
+    desc: "Forest-green cloaks, leather armour, and twin-bladed Silvan rangers.",
+    steps: [
+      { method: "Prime", paint: "Wraithbone spray", hex: "#d9cfb8" },
+      { method: "Cloak/Tunic", paint: "Caliban Green, Biel-Tan Green wash, Warpstone Glow highlights", hex: "#003a26" },
+      { method: "Leather Cuirass", paint: "Mournfang Brown, Agrax wash, Skrag Brown highlight", hex: "#664326" },
+      { method: "Mail Detail", paint: "Leadbelcher, Nuln Oil, Ironbreaker highlights (limited use)", hex: "#4a4a4d" },
+      { method: "Hair", paint: "Mournfang Brown rich → Skrag Brown → Karak Stone (auburn)", hex: "#664326" },
+      { method: "Flesh", paint: "Kislev Flesh smoothed, Reikland shade in recesses", hex: "#dba07c" },
+      { method: "Bow & Quiver", paint: "Mournfang Brown base, Skrag highlights, Ushabti Bone arrow fletches", hex: "#664326" }
+    ]
+  },
+  {
+    system: "me", name: "Dwarves of Erebor — Iron Hills", accent: "Folk of Durin · Khazâd", banner: "#a07a30",
+    desc: "Burnished mail, heavy gold ornament, and the red-bronze of Dáin's hold.",
+    steps: [
+      { method: "Prime", paint: "Chaos Black spray", hex: "#1a1a1a" },
+      { method: "Beard", paint: "Khorne Red, Carroburg shade, Mephiston Red, Wild Rider tips", hex: "#a8232a" },
+      { method: "Mail Armour", paint: "Leadbelcher, Nuln Oil heavy, drybrush Ironbreaker", hex: "#4a4a4d" },
+      { method: "Heavy Gold Trim", paint: "Retributor Armour, Reikland shade, Liberator Gold highlight", hex: "#a07a30" },
+      { method: "Helm Plates", paint: "Balthasar Gold for darker antique brass on helm rim", hex: "#705028" },
+      { method: "Cloth Tunic", paint: "Caliban Green or Macragge Blue (clan-dependent), Nuln shade", hex: "#003a26" },
+      { method: "Flesh", paint: "Bugman's Glow → Reikland → Cadian → Kislev (weathered ruddy)", hex: "#b87a5d" }
+    ]
+  },
+  {
+    system: "me", name: "Hobbits — The Shire", accent: "Halflings of the Westfarthing", banner: "#1e6b3c",
+    desc: "Earthy waistcoats, mossy cloaks, and bare hairy feet. Bilbo, Frodo, Sam, Merry, Pippin.",
+    steps: [
+      { method: "Prime", paint: "Wraithbone spray", hex: "#d9cfb8" },
+      { method: "Waistcoat", paint: "Caliban Green / Khorne Red / Mournfang Brown (varies by hobbit)", hex: "#003a26" },
+      { method: "Shirt", paint: "Ushabti Bone base, Seraphim Sepia shade, Screaming Skull highlight", hex: "#d9cfb8" },
+      { method: "Breeches", paint: "Mournfang Brown, Agrax wash, Skrag Brown highlight", hex: "#664326" },
+      { method: "Cloak (Lórien)", paint: "Stegadon Scale Green, Coelia Greenshade, Sotek highlights", hex: "#1c4a3a" },
+      { method: "Hair (curls)", paint: "Mournfang Brown stippled, Skrag drybrush, Karak Stone on tips", hex: "#664326" },
+      { method: "Foot Hair", paint: "Same recipe as head — stippled, NOT painted as solid", hex: "#664326" },
+      { method: "Flesh", paint: "Bugman's → Reikland → Cadian → Kislev → tiny Bloodletter glaze on cheeks (cheerful flush)", hex: "#b87a5d" }
+    ]
+  },
+  {
+    system: "me", name: "Dúnedain Rangers", accent: "Heirs of Númenor", banner: "#3a3c3c",
+    desc: "Weather-grey cloaks, leather travelling gear, and a sword that was broken. Aragorn's kin.",
+    steps: [
+      { method: "Prime", paint: "Chaos Black spray", hex: "#1a1a1a" },
+      { method: "Cloak", paint: "Mechanicus Standard Grey, Nuln Oil, Dawnstone drybrush", hex: "#52555a" },
+      { method: "Leather Tunic", paint: "Rhinox Hide base, Agrax wash, Mournfang Brown highlight", hex: "#3a221a" },
+      { method: "Boots & Belts", paint: "Mournfang Brown, Agrax wash, Skrag Brown drybrush", hex: "#664326" },
+      { method: "Hood", paint: "Eshin Grey, Nuln Oil shade, Dawnstone edge highlight", hex: "#3a3c3c" },
+      { method: "Hair", paint: "Abaddon Black, Eshin Grey drybrush (dark Númenórean black)", hex: "#1a1a1a" },
+      { method: "Sword & Mail", paint: "Leadbelcher, Nuln Oil, Ironbreaker drybrush", hex: "#4a4a4d" },
+      { method: "Flesh", paint: "Bugman's → Reikland → Cadian → Kislev for weathered fair complexion", hex: "#b87a5d" }
+    ]
+  },
+  {
+    system: "me", name: "Fellowship of the Ring", accent: "Nine Walkers of the Quest", banner: "#c9a559",
+    desc: "Mixed scheme for the central nine. Each member uses their respective faction palette.",
+    steps: [
+      { method: "Prime", paint: "Wraithbone spray (works for all members)", hex: "#d9cfb8" },
+      { method: "Aragorn", paint: "Dúnedain Ranger scheme — grey cloak, brown leather, broken sword", hex: "#52555a" },
+      { method: "Legolas", paint: "Lórien scheme — Stegadon Scale tunic, blond hair, white pauldrons", hex: "#1c4a3a" },
+      { method: "Gimli", paint: "Dwarven scheme — gold/iron mail, red beard, green tunic, axe", hex: "#a07a30" },
+      { method: "Gandalf the Grey", paint: "Mechanicus Standard robe, Nuln shaded, Dawnstone drybrush — grey hat & staff", hex: "#52555a" },
+      { method: "Boromir", paint: "Mail + horn of Gondor, Mournfang Brown leather, Citadel Guard livery", hex: "#664326" },
+      { method: "Hobbits", paint: "Shire scheme for Frodo (brown waistcoat), Sam (yellow), Merry & Pippin (rust/green)", hex: "#003a26" },
+      { method: "Cloaks of Lórien", paint: "Stegadon Scale Green clasps with Retributor leaf — uniform across the eight", hex: "#a07a30" }
+    ]
+  },
+  {
+    system: "me", name: "Knights of Dol Amroth", accent: "Swan-Knights of Imrahil", banner: "#1d3b78",
+    desc: "Sea-blue caparison with silver mail and the swan-prowed helms of Belfalas.",
+    steps: [
+      { method: "Prime", paint: "Leadbelcher spray", hex: "#4a4a4d" },
+      { method: "Mail/Plate", paint: "Nuln Oil wash, drybrush Ironbreaker, Stormhost Silver edges", hex: "#7d7e80" },
+      { method: "Caparison/Surcoat", paint: "Macragge Blue, Drakenhof Nightshade, Calgar Blue highlight", hex: "#1d3b78" },
+      { method: "Swan Heraldry", paint: "Ulthuan Grey base, Apothecary White, White Scar — freehand swan on chest", hex: "#f0ece3" },
+      { method: "Plumes", paint: "Ulthuan Grey, White Scar tips — tall white horsehair plumes", hex: "#f0ece3" },
+      { method: "Horse", paint: "Mournfang Brown bay or Ulthuan Grey white, contrast with the rider", hex: "#664326" }
+    ]
+  },
+  {
+    system: "me", name: "Beorn & Carrock Skin-changers", accent: "Berserkers of Beorn", banner: "#3a221a",
+    desc: "Tall, bare-chested warriors with great axes, in their human form. Wild men of the wilderness.",
+    steps: [
+      { method: "Prime", paint: "Wraithbone spray", hex: "#d9cfb8" },
+      { method: "Flesh", paint: "Bugman's → Reikland → Cadian → Kislev → small Bloodletter glaze on chest/face", hex: "#b87a5d" },
+      { method: "Hair & Beard", paint: "Rhinox Hide, Agrax wash, Mournfang Brown drybrush (dark wild hair)", hex: "#3a221a" },
+      { method: "Fur Cloak", paint: "Mournfang Brown stippled, Skrag highlights, Karak Stone drybrush on tips", hex: "#664326" },
+      { method: "Leather Belt/Boots", paint: "Mournfang Brown, Agrax wash, Skrag highlight", hex: "#664326" },
+      { method: "Axe Haft", paint: "Mournfang Brown wood, Leadbelcher head with Nuln Oil and Ironbreaker drybrush", hex: "#4a4a4d" },
+      { method: "Bear Tattoos", paint: "Thinned Rhinox Hide, freehand bear-motif on shoulders/back", hex: "#3a221a" }
+    ]
+  },
+  {
+    system: "me", name: "Eagles of Manwë", accent: "Lords of the West Wind", banner: "#a07a30",
+    desc: "Golden-feathered giant eagles. Mounts of Gwaihir, saviours at the Black Gate.",
+    steps: [
+      { method: "Prime", paint: "Wraithbone spray", hex: "#d9cfb8" },
+      { method: "Underbelly", paint: "Ushabti Bone basecoat, Seraphim Sepia shade", hex: "#d9cfb8" },
+      { method: "Underbelly Highlight", paint: "Screaming Skull, then White Scar on individual feather edges", hex: "#dcc99a" },
+      { method: "Wing/Back Feathers", paint: "Mournfang Brown base, Agrax wash, individual feather highlight Skrag", hex: "#664326" },
+      { method: "Golden Crown/Head", paint: "Balthasar Gold, Reikland shade, Auric Armour Gold highlight", hex: "#705028" },
+      { method: "Beak & Talons", paint: "Averland Sunset, Reikland shade, Yriel Yellow highlight (golden beak)", hex: "#d99220" },
+      { method: "Eye", paint: "Black socket, Flash Gitz Yellow iris, black slit pupil, white catchlight", hex: "#fde62c" }
+    ]
+  },
+  {
+    system: "me", name: "Mordor — Orcs of Cirith Ungol", accent: "Sauron's Foot Soldiers", banner: "#1a1a1a",
+    desc: "Filthy, mismatched plate over dark green-grey hide. Sauron's lowest infantry.",
+    steps: [
+      { method: "Prime", paint: "Chaos Black spray", hex: "#1a1a1a" },
+      { method: "Skin", paint: "Death Guard Green basecoat (NOT bright orc green — duller)", hex: "#9aa874" },
+      { method: "Skin Shade", paint: "Athonian Camoshade in recesses, Druchii Violet glaze under jaw", hex: "#4a5028" },
+      { method: "Skin Highlight", paint: "Death Guard Green + Karak Stone on raised muscle", hex: "#bbcc8a" },
+      { method: "Armour Plates", paint: "Leadbelcher, Nuln Oil heavy, sponge-chip with Rhinox Hide", hex: "#4a4a4d" },
+      { method: "Cloth/Leather", paint: "Mournfang Brown, Agrax wash, irregular drybrush", hex: "#664326" },
+      { method: "Eye of Sauron Detail", paint: "Mephiston Red shield motifs, Flash Gitz Yellow centre", hex: "#a8232a" },
+      { method: "Teeth & Claws", paint: "Ushabti Bone, Athonian glaze for filth, Screaming Skull tips", hex: "#d9cfb8" }
+    ]
+  },
+  {
+    system: "me", name: "Uruk-hai of Isengard", accent: "Saruman's White Hand", banner: "#3a3c3c",
+    desc: "Tall, muscular, ash-skinned berserkers in black plate with the White Hand of Saruman.",
+    steps: [
+      { method: "Prime", paint: "Chaos Black spray", hex: "#1a1a1a" },
+      { method: "Skin", paint: "Mechanicus Standard Grey base — ash-grey, NOT green", hex: "#52555a" },
+      { method: "Skin Shade", paint: "Nuln Oil all-over, Druchii Violet glaze in deep recesses", hex: "#0a0a0a" },
+      { method: "Skin Highlight", paint: "Dawnstone, then Administratum Grey on muscle peaks", hex: "#80807e" },
+      { method: "Armour", paint: "Abaddon Black with hard Eshin Grey edge highlights", hex: "#1a1a1a" },
+      { method: "White Hand", paint: "Ulthuan Grey base, White Scar — freehand handprint across the face", hex: "#f0ece3" },
+      { method: "Leather Straps", paint: "Rhinox Hide base, Mournfang drybrush", hex: "#3a221a" },
+      { method: "Teeth", paint: "Ushabti Bone, Athonian glaze, Screaming Skull tips (yellowed)", hex: "#d9cfb8" },
+      { method: "Eye (rage)", paint: "Mephiston Red iris, Wild Rider Red rim, black pupil", hex: "#a8232a" }
+    ]
+  },
+  {
+    system: "me", name: "Easterlings — Khand & Rhûn", accent: "Men of the East", banner: "#a8232a",
+    desc: "Crimson-and-gold lamellar armour with conical helms. Sauron's southern allies.",
+    steps: [
+      { method: "Prime", paint: "Chaos Black spray", hex: "#1a1a1a" },
+      { method: "Lamellar Armour", paint: "Khorne Red, Carroburg shade, Mephiston layer, Wild Rider highlights", hex: "#a8232a" },
+      { method: "Heavy Gold Trim", paint: "Retributor Armour, Reikland shade, Liberator highlights (helm rim, lacing)", hex: "#a07a30" },
+      { method: "Helm Spike & Sword", paint: "Leadbelcher, Nuln Oil, Ironbreaker drybrush, Stormhost edge", hex: "#4a4a4d" },
+      { method: "Cloth (sash/under)", paint: "Castellan Green or Macragge Blue (varies); Agrax shade", hex: "#1d3b78" },
+      { method: "Skin", paint: "Doombull Brown, Reikland shade, Bugman's + Skrag highlight (Eastern tan)", hex: "#7c3e30" },
+      { method: "Beard (men)", paint: "Abaddon Black with Eshin Grey edge — dark eastern beard", hex: "#1a1a1a" }
+    ]
+  },
+  {
+    system: "me", name: "Haradrim — Serpent Lords", accent: "Men of the South", banner: "#c9a559",
+    desc: "Bronze-skinned warriors in ochre robes and dark scarves. Riders of mûmakil.",
+    steps: [
+      { method: "Prime", paint: "Wraithbone spray", hex: "#d9cfb8" },
+      { method: "Robes", paint: "Averland Sunset basecoat, Reikland shade, Yriel highlights (ochre desert)", hex: "#d99220" },
+      { method: "Headscarf", paint: "Khorne Red or Abaddon Black, Nuln shade, Eshin highlights", hex: "#741a1c" },
+      { method: "Sash/Belt", paint: "Khorne Red, Carroburg shade, Mephiston highlights", hex: "#a8232a" },
+      { method: "Bronze Detail", paint: "Balthasar Gold, Agrax wash, Sycorax Bronze highlight (necklace, dagger)", hex: "#705028" },
+      { method: "Skin", paint: "Doombull Brown, Reikland shade, Skrag highlight, Bugman's on raised face/hand", hex: "#7c3e30" },
+      { method: "Serpent Banner", paint: "Khorne Red field with Averland Sunset serpent freehand", hex: "#a8232a" }
+    ]
+  },
+  {
+    system: "me", name: "Ringwraiths — Nazgûl", accent: "Servants of the One Ring", banner: "#1a1a1a",
+    desc: "Empty black robes flowing in cold wind. Nine kings of men, now shadow.",
+    steps: [
+      { method: "Prime", paint: "Chaos Black spray", hex: "#1a1a1a" },
+      { method: "Robes", paint: "Abaddon Black with hard Eshin Grey edge highlights only", hex: "#1a1a1a" },
+      { method: "Robe Fine Edge", paint: "Mechanicus Standard Grey on extreme edges only", hex: "#52555a" },
+      { method: "Cool Shadow Glaze", paint: "Thinned Drakenhof Nightshade in deepest folds — adds otherworldly chill", hex: "#0e1f3c" },
+      { method: "Mail Underneath", paint: "Leadbelcher with heavy Nuln Oil, glimpses only", hex: "#4a4a4d" },
+      { method: "Sword", paint: "Leadbelcher, Nuln Oil, Ironbreaker drybrush, Stormhost edge", hex: "#4a4a4d" },
+      { method: "Witch-King Crown", paint: "Leadbelcher, Nuln Oil, Stormhost on points", hex: "#4a4a4d" },
+      { method: "Wraith Eyes (if visible)", paint: "Mephiston Red glow inside hood, with thin White Scar centre", hex: "#a8232a" }
+    ]
+  },
+  {
+    system: "me", name: "Sauron the Dark Lord", accent: "The Necromancer · Lord of the Rings", banner: "#a07a30",
+    desc: "Blackened, scorched plate over an immense armoured form. The mace, the helm, the eye.",
+    steps: [
+      { method: "Prime", paint: "Chaos Black spray", hex: "#1a1a1a" },
+      { method: "Armour Base", paint: "Leadbelcher, then Nuln Oil heavy all-over", hex: "#4a4a4d" },
+      { method: "Burnt Edges", paint: "Drybrush Eshin Grey, then Mechanicus Standard on raised plates", hex: "#3a3c3c" },
+      { method: "Heat-Glow Cracks", paint: "Fire Dragon Bright in armour cracks, then Yriel Yellow centre, White Scar core — OSL", hex: "#f08025" },
+      { method: "Heavy Gold Trim", paint: "Retributor Armour, Agrax shade, Auric Armour Gold highlight", hex: "#a07a30" },
+      { method: "Mace", paint: "Leadbelcher haft, Nuln Oil, Stormhost edges; head sponge-chipped with Rhinox", hex: "#4a4a4d" },
+      { method: "Cape (if Necromancer form)", paint: "Abaddon Black with Eshin Grey edge", hex: "#1a1a1a" },
+      { method: "Eye of Sauron Helm", paint: "Mephiston Red base, Fire Dragon Bright glow, Yriel Yellow slit core", hex: "#cf2e29" }
+    ]
   }
 ];
 
@@ -3670,7 +3914,8 @@ const systemLabels = {
   "40k": "Warhammer 40,000",
   "heresy": "The Horus Heresy",
   "aos": "Age of Sigmar",
-  "old": "The Old World"
+  "old": "The Old World",
+  "me": "Middle-earth"
 };
 
 function renderFactions(system = 'all', search = '') {
