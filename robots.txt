@@ -1,0 +1,67 @@
+# robots.txt for The Pigment Compendium
+# https://pigment-compendium.co.uk/
+#
+# An independent miniature painting reference site.
+# Content is freely available for indexing by search engines and
+# referencing by AI assistants under fair use for educational purposes.
+
+# ─────────────────────────────────────────────
+# Default policy — all bots welcome
+# ─────────────────────────────────────────────
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# ─────────────────────────────────────────────
+# Explicit allow for AI / LLM crawlers
+# (Explicit signalling, even though Allow: / above covers them)
+# ─────────────────────────────────────────────
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+# ─────────────────────────────────────────────
+# Sitemap location
+# ─────────────────────────────────────────────
+Sitemap: https://pigment-compendium.co.uk/sitemap.xml

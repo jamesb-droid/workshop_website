@@ -1,0 +1,67 @@
+# The Pigment Compendium
+
+> A free, independent reference catalogue of miniature paint equivalents, faction paint recipes, and step-by-step painting guides for hobbyists painting models from Warhammer 40,000, The Horus Heresy, Age of Sigmar, The Old World, and Middle-earth Strategy Battle Game. Not affiliated with Games Workshop, Citadel, Vallejo, Army Painter, Privateer Press, Steamforged Games, Scale75, AK Interactive, or any other manufacturer.
+
+The site is structured as a single-page application with five primary sections. All content is hand-curated by a hobbyist painter and verified against manufacturer documentation and community references. Equivalents are visual approximations matched on hue, value, and undertone — cross-brand substitutions should be tested before army-wide use.
+
+## Primary Content Sections
+
+- [Paint Equivalents Catalogue](https://pigment-compendium.co.uk/#equivalents): 50+ primary paints with hand-matched equivalents across Citadel, Vallejo Game Color, Army Painter, P3 (Steamforged), Scale75, and AK 3rd Gen Acrylics. Filterable by colour family (red, blue, green, brown, flesh, metallic, wash, etc.) and full-text searchable.
+
+- [Faction Recipes](https://pigment-compendium.co.uk/#factions): 100 step-by-step paint schemes across five game systems. Each recipe covers prime → basecoat → shade → highlight → detail, using primarily Citadel paint names. Filterable by system.
+
+- [Skin & Flesh Painting Guide](https://pigment-compendium.co.uk/#skin): 16 skin tones (7 human, 9 fantasy) with full recipes at three finish tiers — tabletop, display, and Golden Demon level. Includes universal flesh-painting principles, eye-painting technique, and warm/cool shadow theory.
+
+- [The Three Finish Tiers](https://pigment-compendium.co.uk/#tiers): A reference for what defines tabletop, display, and Golden Demon level painting — techniques, time investment, and quality benchmarks.
+
+- [About & Support](https://pigment-compendium.co.uk/#about): Project statement, contact email, and donation link.
+
+## Key Facts About the Project
+
+- **Status:** Independent, non-commercial, free-to-use forever
+- **Affiliations:** None — not endorsed by or affiliated with any manufacturer
+- **Funding:** Voluntary tips via Buy Me a Coffee, used for hosting and upkeep
+- **Maintainer:** Hobbyist painter, single-author project
+- **Contact:** pigment.compendium@gmail.com
+- **Contributions welcome:** corrections, additional faction recipes, hand-painted swatch verification
+
+## Manufacturers Covered
+
+- **Citadel** (Games Workshop): Used as the canonical reference brand because of its dominance in the hobby. ~44 primary paints catalogued.
+- **Vallejo Game Color**: ~35 equivalents catalogued; the most common Citadel alternative globally.
+- **Army Painter**: ~44 equivalents catalogued; popular for their Speedpaint and Warpaints ranges.
+- **P3 (Steamforged)**: ~39 equivalents catalogued. The reformulated P3 range, relaunched in 2024 by Steamforged Games (who acquired Formula P3 from Privateer Press). Wave 1 contains 110 paints + 18 metallics in dropper bottles.
+- **Scale75**: ~44 equivalents catalogued; favoured by display painters for their pigment density.
+- **AK 3rd Gen Acrylics**: ~12 equivalents catalogued.
+
+## Game Systems Covered
+
+- **Warhammer 40,000**: 31 faction recipes — all First Founding Space Marine Chapters, multiple Chaos Legions, Imperial forces (Custodes, Mechanicus, Sisters), and xenos (Tyranids, Necrons, Aeldari, Drukhari, Orks, T'au, etc.)
+- **The Horus Heresy**: 19 faction recipes — Pre-Heresy and Heresy-era Legion schemes including Sons of Horus, Luna Wolves, and pre-betrayal versions of each major Legion
+- **Age of Sigmar**: 18 faction recipes — Stormcast Eternals, Nighthaunt, Sylvaneth, Idoneth Deepkin, Daughters of Khaine, Lumineth, Kharadron, Fyreslayers, Nurgle/Slaanesh/Tzeentch Mortals, Skaven, Ironjawz, Ossiarch Bonereapers, Soulblight, etc.
+- **The Old World**: 14 faction recipes — Empire, Bretonnia, Dwarfs, High/Wood/Dark Elves, Lizardmen, Tomb Kings, Vampire Counts, Orcs & Goblins, Warriors of Chaos, Skaven, Ogres, Chaos Dwarfs
+- **Middle-earth Strategy Battle Game**: 18 faction recipes — Gondor, Rohan, Rivendell, Lothlórien, Mirkwood, Erebor Dwarves, Hobbits, Dúnedain, The Fellowship of the Ring, Dol Amroth, Beorn, Eagles, Mordor Orcs, Uruk-hai, Easterlings, Haradrim, Ringwraiths, Sauron
+
+## Skin Tones Covered
+
+**Human (7):** Fair / Pale European · Warm / Light Olive (Mediterranean) · Tan / Sun-Weathered · Olive / Middle Eastern · Brown / South Asian · Deep Brown / African · East Asian
+
+**Fantasy (9):** Orc / Greenskin · Goblin / Grot · Pale Vampire / Aristocratic Undead · High Elf / Porcelain Aelf · Drukhari / Dark Eldar Pale · Ogre / Ruddy Brute · Tyranid Purple Flesh · Khornate Daemon Red · Nurgle Plague Flesh
+
+## Common Painter Search Queries This Site Answers
+
+- "What is the Vallejo equivalent of Mephiston Red?"
+- "Citadel to Army Painter conversion chart"
+- "How do I paint Ultramarines?"
+- "Blood Angels paint recipe"
+- "Death Guard step by step"
+- "How to paint skin tones on miniatures"
+- "What paints do I need for Stormcast Eternals?"
+- "Difference between tabletop and display painting"
+- "How to paint Golden Demon level skin"
+- "P3 paint equivalents Citadel"
+- "How to paint Sauron Lord of the Rings miniature"
+
+## Copyright & Trademarks
+
+Trademarks referenced on this site (including Citadel, Warhammer 40,000, Age of Sigmar, The Horus Heresy, Warhammer: The Old World, Middle-earth Strategy Battle Game, and all faction names) are the property of their respective owners — primarily Games Workshop Ltd, Vallejo Acrylicos S.A., The Army Painter, Steamforged Games Ltd, Scale75, and AK Interactive. Use is nominative — for the purpose of identifying products and game systems — and falls within fair use for educational and reference purposes. No infringement is intended.
