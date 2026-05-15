@@ -145,7 +145,7 @@
 <!-- ═══════════ FONTS ═══════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Reenie+Beanie&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #14110d;
@@ -922,6 +922,110 @@ nav.tabs button .num {
 .detail-prose strong {
   color: var(--ink);
   font-weight: 600;
+}
+
+/* ───────── PAINTER'S NOTES — HANDMADE PAPER ───────── */
+.painters-notes-section {
+  position: relative;
+}
+
+.painters-notes-section .section-title {
+  color: var(--ink);
+}
+
+.painters-notes-prose {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 20px;
+  line-height: 1;
+  color: #2a1f12;
+  max-width: 860px;
+  padding: 48px 56px 56px;
+  position: relative;
+  /* Layered cream paper gradient — warm vellum tones */
+  background:
+    /* subtle stain blobs */
+    radial-gradient(ellipse 600px 200px at 18% 22%, rgba(174, 128, 70, 0.10), transparent 65%),
+    radial-gradient(ellipse 400px 180px at 82% 78%, rgba(165, 120, 60, 0.09), transparent 60%),
+    radial-gradient(ellipse 200px 100px at 50% 50%, rgba(200, 160, 100, 0.06), transparent 70%),
+    /* base parchment colour */
+    linear-gradient(135deg, #f4ead0 0%, #ebdfb8 100%);
+  /* soft drop shadow + inner shadow for depth */
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 0 60px rgba(140, 100, 50, 0.12),
+    inset 0 0 4px rgba(80, 50, 20, 0.15);
+  /* slight rotation for handmade feel */
+  transform: rotate(-0.3deg);
+  /* ragged edge via clip-path */
+  clip-path: polygon(
+    0.5% 0.8%, 2% 0.2%, 5% 1%, 8% 0.4%, 14% 0.9%, 22% 0.1%, 30% 0.7%, 40% 0.3%,
+    52% 0.9%, 64% 0.2%, 74% 0.8%, 84% 0.3%, 92% 0.7%, 98% 0.2%, 99.7% 1%,
+    99.2% 8%, 99.8% 18%, 99.3% 28%, 99.7% 40%, 99.2% 52%, 99.8% 64%, 99.3% 78%, 99.7% 90%, 99.2% 99%,
+    98% 99.7%, 90% 99.2%, 80% 99.8%, 68% 99.3%, 56% 99.7%, 44% 99.1%, 32% 99.8%, 22% 99.3%, 12% 99.7%, 4% 99.2%, 0.5% 99.5%,
+    0.8% 92%, 0.2% 82%, 0.7% 70%, 0.3% 58%, 0.9% 46%, 0.2% 34%, 0.7% 22%, 0.3% 12%
+  );
+}
+
+/* Subtle fibres pattern overlay */
+.painters-notes-prose::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      52deg,
+      transparent 0,
+      transparent 3px,
+      rgba(120, 80, 40, 0.025) 3px,
+      rgba(120, 80, 40, 0.025) 4px
+    ),
+    repeating-linear-gradient(
+      127deg,
+      transparent 0,
+      transparent 5px,
+      rgba(100, 70, 30, 0.02) 5px,
+      rgba(100, 70, 30, 0.02) 6px
+    );
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+.painters-notes-prose strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1.2;
+  margin-top: 14px;
+  margin-bottom: 4px;
+  color: #1a1208;
+  font-weight: 400;
+  /* Underline emphasis since handwritten doesn't bold well */
+  text-decoration: underline;
+  text-decoration-color: rgba(50, 30, 10, 0.4);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.painters-notes-prose strong:first-child {
+  margin-top: 0;
+}
+
+.painters-notes-prose br + br {
+  /* tighter paragraph breaks since the font is taller */
+  display: block;
+  content: '';
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .painters-notes-prose {
+    padding: 32px 28px;
+    font-size: 18px;
+    transform: rotate(-0.2deg);
+  }
+  .painters-notes-prose strong {
+    font-size: 22px;
+  }
 }
 
 .detail-steps {
@@ -12334,10 +12438,11 @@ function openFactionDetail(factionName) {
           `;
         } else {
           // Prose section
+          const isPaintersNotes = /painter/i.test(s.title);
           return `
-            <section class="detail-section">
+            <section class="detail-section${isPaintersNotes ? ' painters-notes-section' : ''}">
               <h2 class="section-title">${s.title}</h2>
-              <div class="detail-prose">${s.body}</div>
+              <div class="detail-prose${isPaintersNotes ? ' painters-notes-prose' : ''}">${s.body}</div>
             </section>
           `;
         }
